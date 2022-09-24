@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://bullet2.gd" type="Script" id=1]
+[ext_resource path="res://Images/bulletBlue2_outline.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.07105
+height = 0.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 15.432
+
+[node name="bullet" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+shoot_delay = 1.0
+
+[node name="bulletBlue2_outline" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0.163055, 0.241273 )
+shape = SubResource( 1 )
+
+[node name="sens" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="sens"]
+position = Vector2( 0.0802956, -0.142298 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="sens" to="." method="_on_sens_body_entered"]

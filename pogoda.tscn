@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://pogoda.gd" type="Script" id=1]
+[ext_resource path="res://ofont.ru_Godzilla.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://1620209182_39-phonoteka_org-p-fon-dlya-sozdaniya-igri-46.jpg" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 80
+font_data = ExtResource( 2 )
+
+[node name="interfeise" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 482.155
+margin_top = 356.689
+margin_right = 482.155
+margin_bottom = 356.689
+rect_pivot_offset = Vector2( 1271.09, 24.4565 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -174.289 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ -350.813 ]
+}
+
+[node name="1620209182_39-phonoteka_org-p-fon-dlya-sozdaniya-igri-46" type="Sprite" parent="."]
+position = Vector2( 498.326, 185.859 )
+scale = Vector2( 1.09955, 1.07797 )
+texture = ExtResource( 4 )
+
+[node name="start" type="Button" parent="."]
+margin_left = -468.053
+margin_top = -332.124
+margin_right = -168.053
+margin_bottom = -232.124
+rect_pivot_offset = Vector2( 238.658, 360.643 )
+custom_fonts/font = SubResource( 1 )
+text = " Запустить"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="options" type="Button" parent="."]
+margin_left = 1004.16
+margin_top = -289.029
+margin_right = 1304.16
+margin_bottom = -189.029
+custom_fonts/font = SubResource( 2 )
+text = "Настройки"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exet" type="Button" parent="."]
+margin_left = 345.045
+margin_top = 575.01
+margin_right = 545.045
+margin_bottom = 625.01
+rect_pivot_offset = Vector2( 264.438, -236.62 )
+custom_fonts/font = SubResource( 3 )
+text = "Выход"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="if" type="Sprite" parent="."]
+visible = false
+position = Vector2( 300.223, -91.6934 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+offset = Vector2( -872.698, 105.48 )
+
+[node name="yes" type="Button" parent="if"]
+margin_left = -1690.77
+margin_top = 456.348
+margin_right = -1390.77
+margin_bottom = 556.348
+custom_fonts/font = SubResource( 4 )
+shortcut_in_tooltip = false
+keep_pressed_outside = true
+text = "да"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="no" type="Button" parent="if"]
+margin_left = -306.198
+margin_top = 466.171
+margin_right = -6.19824
+margin_bottom = 566.171
+custom_fonts/font = SubResource( 4 )
+text = "нет"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="if"]
+margin_left = -1604.0
+margin_top = -311.0
+margin_right = -174.0
+margin_bottom = -150.0
+custom_fonts/font = SubResource( 5 )
+text = "Вы действительно хотити выйти из игры?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="exet" to="." method="_on_exet_pressed"]
+[connection signal="pressed" from="if/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="if/no" to="." method="_on_no_pressed"]

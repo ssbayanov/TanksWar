@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Images/shotLarge.png" type="Texture" id=1]
+[ext_resource path="res://Images/shotRed.png" type="Texture" id=2]
+[ext_resource path="res://Images/shotOrange.png" type="Texture" id=3]
+[ext_resource path="res://Images/shotThin.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="shooot" type="AnimatedSprite"]
+visible = false
+position = Vector2( 36.0217, -0.529732 )
+rotation = -1.5708
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 1 )
