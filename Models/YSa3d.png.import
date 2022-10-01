@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/YSa3d.png-90cd3f6c93771809cc5a317878dbf399.stex"
+path="res://.import/YSa3d.png-5e50c201edee5b3cc7f216fb2af1bb06.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://YSa3d.png"
-dest_files=[ "res://.import/YSa3d.png-90cd3f6c93771809cc5a317878dbf399.stex" ]
+source_file="res://Models/YSa3d.png"
+dest_files=[ "res://.import/YSa3d.png-5e50c201edee5b3cc7f216fb2af1bb06.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

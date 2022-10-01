@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1613325719_93-p-krasivii-sinii-fon-na-telefon-108.jpg-1a3f637766bf2158f725ee6006452aae.stex"
+path="res://.import/options.png-c46d1d9f33aba34b747b48aea0aa1b9a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1613325719_93-p-krasivii-sinii-fon-na-telefon-108.jpg"
-dest_files=[ "res://.import/1613325719_93-p-krasivii-sinii-fon-na-telefon-108.jpg-1a3f637766bf2158f725ee6006452aae.stex" ]
+source_file="res://Models/options.png"
+dest_files=[ "res://.import/options.png-c46d1d9f33aba34b747b48aea0aa1b9a.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

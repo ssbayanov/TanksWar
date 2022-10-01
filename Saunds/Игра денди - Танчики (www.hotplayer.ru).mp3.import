@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Игра денди - Танчики (www.hotplayer.ru).mp3-081bec827e8480853837e2f18ac7e2ea.mp3str"
+
+[deps]
+
+source_file="res://Saunds/Игра денди - Танчики (www.hotplayer.ru).mp3"
+dest_files=[ "res://.import/Игра денди - Танчики (www.hotplayer.ru).mp3-081bec827e8480853837e2f18ac7e2ea.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

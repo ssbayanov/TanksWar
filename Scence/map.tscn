@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Dirt_and_road.tres" type="TileSet" id=1]
-[ext_resource path="res://map.gd" type="Script" id=2]
+[ext_resource path="res://Models/Dirt_and_road.tres" type="TileSet" id=1]
+[ext_resource path="res://Scripts/map.gd" type="Script" id=2]
 
 [node name="map" type="Node2D"]
 script = ExtResource( 2 )
