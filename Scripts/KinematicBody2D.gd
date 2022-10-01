@@ -13,10 +13,10 @@ var hp = 100
 var len_track = 0
 var track_step = 10
 
-onready var trackRes = load("res://track.tscn")
+onready var trackRes = load("res://Scence/track.tscn")
 
 func _ready():
-	bullet = load("res://bullet1.tscn").instance()
+	bullet = load("res://Scence/bullet1.tscn").instance()
 	change_hp(0)
 
 
