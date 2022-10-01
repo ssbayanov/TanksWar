@@ -32,7 +32,6 @@ rect_pivot_offset = Vector2( 1271.09, 24.4565 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -174.289 ],
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ -350.813 ]
 }
 

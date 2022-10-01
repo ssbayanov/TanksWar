@@ -89,6 +89,7 @@ func change_hp(amount):
 		hp = 100
 	$Node2D/hpbar.set_value(hp)
 	
+	
 
 
 	
