@@ -49,9 +49,6 @@ rect_pivot_offset = Vector2( 238.658, 360.643 )
 custom_fonts/font = SubResource( 1 )
 text = " Запустить"
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="options" type="Button" parent="."]
 margin_left = 1004.16
