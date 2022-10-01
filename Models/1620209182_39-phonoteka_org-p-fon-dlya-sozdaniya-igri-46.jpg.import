@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/options.png-d124fee3910ec73759f327ffe6c01c80.stex"
+path="res://.import/1620209182_39-phonoteka_org-p-fon-dlya-sozdaniya-igri-46.jpg-91a456e8f2cbfcf389a29d35f509a9cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://options.png"
-dest_files=[ "res://.import/options.png-d124fee3910ec73759f327ffe6c01c80.stex" ]
+source_file="res://Models/1620209182_39-phonoteka_org-p-fon-dlya-sozdaniya-igri-46.jpg"
+dest_files=[ "res://.import/1620209182_39-phonoteka_org-p-fon-dlya-sozdaniya-igri-46.jpg-91a456e8f2cbfcf389a29d35f509a9cc.stex" ]
 
 [params]
 

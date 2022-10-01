@@ -13,10 +13,10 @@ var hp = 100
 var len_track = 0
 var track_step = 10
 
-onready var trackRes = load("res://track.tscn")
+onready var trackRes = load("res://Scence/track.tscn")
 
 func _ready():
-	bullet = load("res://bullet1.tscn").instance()
+	bullet = load("res://Scence/bullet1.tscn").instance()
 	change_hp(0)
 
 
@@ -26,7 +26,7 @@ func _process(delta):
 		_shoot()
 	$hpbar.set_global_rotation(0)
 
-
+#p
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):#если происходит нажатие кномки вниз
 		if abs(c_speed.y) < max_speed: #меняем скорость на ускорение * время смены кадров
