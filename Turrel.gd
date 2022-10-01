@@ -1,0 +1,125 @@
+extends Node2D
+
+var mindistance = 100
+var maxdistance = 500
+var player_tank 
+var bullet
+var c_speed = Vector2()  # текущий вектор
+var rot_speed = 70 #скорость поворота
+var shoot_delayer = 1
+var hp = 100
+var can_shoot = 0
+var len_track = 0
+var track_step = 10
+
+var barrel = true
+# var b = "text"
+
+
+# Called when the node enters the scene tree for the first time.
+func damage_hp(amount):
+	change_hp(-amount)
+	
+func boom():
+	hp = 0
+	$boom_player.show()
+	$boom_player.play()
+	$CollisionShape2D.disabled = true
+	player_tank = null
+	$Node2D/reloadprogress.hide()
+	$tank_npc.material.set_shader_param("grayscale", true)
+	
+	
+func change_hp(amount):
+	hp +=amount
+	if hp <=0:
+		hp = 0
+		boom()
+	if hp > 100:
+		hp = 100
+	$Node2D/hpbar.set_value(hp)
+	
+
+
+	
+	
+	 
+func _shoot_delayer_process(delta):
+	if shoot_delayer < 1:
+		shoot_delayer += delta 
+		$Node2D/reloadprogress.set_value(shoot_delayer*100)
+		$Node2D/reloadprogress.show()
+	else:
+		shoot_delayer = 1
+		$Node2D/reloadprogress.hide()
+	
+	$Node2D.set_global_rotation(0)
+	if can_shoot > 0:
+		_shoot() 
+	
+	
+	
+	
+	
+func _shoot1():
+	if shoot_delayer >= bullet.shoot_delay:
+		var newbullet = bullet.duplicate()
+		get_parent().add_child(newbullet)
+		newbullet.shoot_delay = 0.2
+		if barrel:
+			$shooot.show()
+			$shooot.play("default")
+			newbullet.global_position = $Position2D.global_position
+		else:
+			$shooot2.show()
+			$shooot2.play("default")
+			newbullet.global_position = $Position2D2.global_position
+		barrel = not barrel 
+		newbullet.global_rotation = global_rotation
+		newbullet.is_object=false
+		shoot_delayer = 0
+	if shoot_delayer >= bullet.shoot_delay:
+		var newbullet = bullet.duplicate()
+		newbullet.shoot_delay = 0.7
+		get_parent().add_child(newbullet)
+		newbullet.global_position = $barrel/BulletPosition2D.global_position
+		newbullet.global_rotation = $barrel/Sprite.global_rotation
+		newbullet.is_object = false
+		shoot_delayer = 0
+		$barrel/shooot.play("default")
+		$barrel/shooot.show()
+		
+
+func _on_shooot_animation_finished():
+	$barrel/shooot.set_frame(0)
+	$barrel/shooot.hide()
+
+	
+
+
+
+
+func _on_Area2D_body_entered(body):
+	can_shoot += 1
+
+
+func _on_Area2D_body_exited(body):
+	can_shoot = 1
+
+
+func _on_boom_player_animation_finished():
+	$boom_player.hide()
+
+
+func _on_shooot_animation_finished():
+	$shooot.set_frame(0)
+	$shooot.hide()
+
+func _on_shooot2_animation_finished():
+	$shooot2.set_frame(0)
+	$shooot2.hide()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
