@@ -26,7 +26,7 @@ func _process(delta):
 		_shoot()
 	$hpbar.set_global_rotation(0)
 
-#puy
+#p
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):#если происходит нажатие кномки вниз
 		if abs(c_speed.y) < max_speed: #меняем скорость на ускорение * время смены кадров
