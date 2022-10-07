@@ -2,4 +2,4 @@ extends Node2D
 
 
 func _ready():
-	$Turrel/turrelnpc.player_tank = $KinematicBody2D
+	$Turrel.player_tank = $KinematicBody2D

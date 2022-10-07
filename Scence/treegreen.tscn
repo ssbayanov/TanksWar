@@ -36,7 +36,6 @@ texture = ExtResource( 2 )
 [node name="twigs2" type="Sprite" parent="twings"]
 position = Vector2( 1.74999, 0.500001 )
 rotation = -0.366519
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="twigs3" type="Sprite" parent="twings"]

@@ -15,7 +15,10 @@ var track_step = 10
 var barrel = true
 # var b = "text"
 
-
+func _ready():
+	bullet = load("res://Scence/bullet1.tscn").instance()
+	change_hp(0)
+	
 # Called when the node enters the scene tree for the first time.
 func damage_hp(amount):
 	change_hp(-amount)
