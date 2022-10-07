@@ -9,23 +9,12 @@
 [ext_resource path="res://Images/specialBarrel1_outline.png" type="Texture" id=7]
 [ext_resource path="res://Images/tank_bigRed.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Turrel.gd" type="Script" id=9]
-
-[sub_resource type="Shader" id=5]
-code = " shader_type canvas_item;
-
-uniform bool grayscale = false;
-
-void fragment() {
-	COLOR = texture(TEXTURE, UV);
-	
-	if (grayscale) { 
-		COLOR.rbg = vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114)));
-	}
-}"
+[ext_resource path="res://Models/Tunk.gdshader" type="Shader" id=10]
 
 [sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+shader = ExtResource( 10 )
 shader_param/grayscale = false
+shader_param/coldscale = false
 
 [sub_resource type="Shader" id=1]
 code = " shader_type canvas_item;
@@ -45,7 +34,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 30.3754, 35.2866 )
+extents = Vector2( 24.6287, 25.2047 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -55,12 +44,11 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[node name="Turrel" type="KinematicBody2D"]
+[node name="Turrel" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 9 )
 
 [node name="tank_npc" type="Sprite" parent="."]
 material = SubResource( 6 )
-position = Vector2( 0, -65 )
 rotation = 3.14159
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 8 )
@@ -73,63 +61,68 @@ scale = Vector2( 0.590785, -0.607875 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, -66 )
+position = Vector2( -1.75238e-05, 4.03861e-05 )
 rotation = 3.14159
 scale = Vector2( 0.609045, -0.595127 )
 shape = SubResource( 3 )
 
 [node name="shooot2" parent="." instance=ExtResource( 5 )]
 visible = true
-position = Vector2( 6.95063, -80.3967 )
+position = Vector2( 6, -15 )
 rotation = 2.47725e-06
 scale = Vector2( 0.487236, -0.476102 )
 
 [node name="shooot" parent="." instance=ExtResource( 5 )]
 visible = true
-position = Vector2( -4.77349, -80.8431 )
+position = Vector2( -6, -15 )
 rotation = 2.47725e-06
 scale = Vector2( 0.487236, -0.476102 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -5.09045, -102.154 )
+position = Vector2( -5.09, -23 )
 scale = Vector2( 0.609045, -0.595127 )
 
 [node name="Position2D2" type="Position2D" parent="."]
-position = Vector2( 7.09045, -102.154 )
+position = Vector2( 6, -23 )
 scale = Vector2( 0.609045, -0.595127 )
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 1, -66 )
-rotation = 3.14159
+position = Vector2( 1, 0 )
 scale = Vector2( 0.609045, -0.595127 )
 
 [node name="hpbar" type="ProgressBar" parent="Node2D"]
 margin_left = -32.0
-margin_top = -60.0
+margin_top = 30.0
 margin_right = 38.0
-margin_bottom = -45.0
+margin_bottom = 45.0
 
 [node name="reloadprogress" type="ProgressBar" parent="Node2D"]
 margin_left = -32.0
-margin_top = -45.0
+margin_top = 45.0
 margin_right = 38.0
-margin_bottom = -30.0
+margin_bottom = 60.0
+value = 50.0
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 1, -66 )
 rotation = -1.57079
 scale = Vector2( 0.595127, -0.609045 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2( -1.58103e-07, 13.2582 )
+position = Vector2( -23.5582, 1.75656 )
 rotation = 4.71239
 scale = Vector2( 1.04544, 1 )
 polygon = PoolVector2Array( -41.9045, 51.4581, 58.4821, 51.4581, 193.33, 394.57, -134.8, 391.574 )
 
 [node name="boom_player" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 1, -66 )
+position = Vector2( 1, 0 )
 rotation = 3.14159
 scale = Vector2( 0.609045, -0.595127 )
 frames = SubResource( 4 )
 animation = "boom"
+
+[connection signal="animation_finished" from="shooot2" to="." method="_on_shooot2_animation_finished"]
+[connection signal="animation_finished" from="shooot" to="." method="_on_shooot_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="animation_finished" from="boom_player" to="." method="_on_boom_player_animation_finished"]

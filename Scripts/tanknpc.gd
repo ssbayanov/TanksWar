@@ -43,7 +43,7 @@ func _process(delta):
 func _physics_process(delta):
 	if not player_tank:
 		return
-	var distance = (player_tank.position - position).rotated(PI/2)
+	var distance = (player_tank.position - position)#.rotated(PI/2)
 	
 	if distance.length() < maxdistance and distance.length() > mindistance: 
 		if abs(c_speed.y) < max_speed: #меняем скорость на ускорение * время смены кадров

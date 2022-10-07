@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://tanknpc.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/tanknpc.gd" type="Script" id=1]
 [ext_resource path="res://Images/explosion2.png" type="Texture" id=2]
 [ext_resource path="res://Images/explosion3.png" type="Texture" id=3]
 [ext_resource path="res://Images/explosion5.png" type="Texture" id=4]
@@ -8,23 +8,12 @@
 [ext_resource path="res://Images/explosion4.png" type="Texture" id=6]
 [ext_resource path="res://Images/specialBarrel1_outline.png" type="Texture" id=7]
 [ext_resource path="res://animations/shooot.tscn" type="PackedScene" id=8]
-
-[sub_resource type="Shader" id=5]
-code = " shader_type canvas_item;
-
-uniform bool grayscale = false;
-
-void fragment() {
-	COLOR = texture(TEXTURE, UV);
-	
-	if (grayscale) { 
-		COLOR.rbg = vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114)));
-	}
-}"
+[ext_resource path="res://Models/Tunk.gdshader" type="Shader" id=9]
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 5 )
+shader = ExtResource( 9 )
 shader_param/grayscale = false
+shader_param/coldscale = false
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 18.2555
@@ -37,7 +26,7 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[node name="tanknpc" type="KinematicBody2D"]
+[node name="tanknpc" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -45,7 +34,6 @@ __meta__ = {
 
 [node name="tank_npc" type="Sprite" parent="."]
 material = SubResource( 2 )
-rotation = 3.14159
 scale = Vector2( 1.8, 1.2 )
 texture = ExtResource( 7 )
 

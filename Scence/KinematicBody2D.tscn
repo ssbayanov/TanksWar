@@ -36,7 +36,6 @@ current = true
 [node name="drive" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( -87.3969, 91.8175 )
 stream = ExtResource( 3 )
-autoplay = true
 
 [node name="hpbar" type="Node2D" parent="."]
 
@@ -47,9 +46,6 @@ margin_right = 40.0
 margin_bottom = -46.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="reloadprogress" type="ProgressBar" parent="hpbar"]
 margin_left = -40.0

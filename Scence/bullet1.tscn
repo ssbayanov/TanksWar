@@ -3,7 +3,6 @@
 [ext_resource path="res://Scripts/bullet.gd" type="Script" id=1]
 [ext_resource path="res://Images/bulletBlue1_outline.png" type="Texture" id=2]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.07105
 height = 0.0
