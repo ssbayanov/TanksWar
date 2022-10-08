@@ -9,12 +9,23 @@
 [ext_resource path="res://Images/specialBarrel1_outline.png" type="Texture" id=7]
 [ext_resource path="res://Images/tank_bigRed.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Turrel.gd" type="Script" id=9]
-[ext_resource path="res://Models/Tunk.gdshader" type="Shader" id=10]
+
+[sub_resource type="Shader" id=5]
+code = " shader_type canvas_item;
+
+uniform bool grayscale = false;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	
+	if (grayscale) { 
+		COLOR.rbg = vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114)));
+	}
+}"
 
 [sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 10 )
+shader = SubResource( 5 )
 shader_param/grayscale = false
-shader_param/coldscale = false
 
 [sub_resource type="Shader" id=1]
 code = " shader_type canvas_item;
@@ -34,7 +45,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 24.6287, 25.2047 )
+extents = Vector2( 25.4497, 23.5244 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -61,7 +72,7 @@ scale = Vector2( 0.590785, -0.607875 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.75238e-05, 4.03861e-05 )
+position = Vector2( -0.499992, 0.999999 )
 rotation = 3.14159
 scale = Vector2( 0.609045, -0.595127 )
 shape = SubResource( 3 )
@@ -108,10 +119,10 @@ rotation = -1.57079
 scale = Vector2( 0.595127, -0.609045 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2( -23.5582, 1.75656 )
+position = Vector2( -22.0803, -3.25919 )
 rotation = 4.71239
 scale = Vector2( 1.04544, 1 )
-polygon = PoolVector2Array( -41.9045, 51.4581, 58.4821, 51.4581, 193.33, 394.57, -134.8, 391.574 )
+polygon = PoolVector2Array( -41.9045, 51.4581, 29.8639, 50.6459, 31.4327, 398.471, -58.0886, 391.749 )
 
 [node name="boom_player" type="AnimatedSprite" parent="."]
 visible = false

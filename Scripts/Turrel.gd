@@ -42,7 +42,6 @@ func _physics_process(delta):
 	var distance = (player_tank.position - position).rotated(PI/2)
 	global_rotation = lerp_angle(global_rotation,distance.angle(),delta)
 	
-	_shoot_delayer_process(delta)
 	
 	
 func damage_hp(amount):
