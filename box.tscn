@@ -4,7 +4,6 @@
 [ext_resource path="res://Images/crateWood.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.9585, 14.5003 )
 
 [node name="box" type="RigidBody2D"]
 mass = 10.2041
