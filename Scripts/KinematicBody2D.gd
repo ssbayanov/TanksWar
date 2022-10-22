@@ -13,21 +13,32 @@ var hp = 100
 var len_track = 0
 var track_step = 10
 
-onready var trackRes = load("res://track.tscn")
+var time_cold = 0
+onready var trackRes = load("res://Scence/track.tscn")
 
 func _ready():
-	bullet = load("res://bullet1.tscn").instance()
+	bullet = load("res://Scence/bullet1.tscn").instance()
 	change_hp(0)
 
 
 func _process(delta):
+	if time_cold > 0:
+		return
 	_shoot_delayer_process(delta)
 	if Input.is_action_just_pressed("ui_accept"):
 		_shoot()
 	$hpbar.set_global_rotation(0)
 
-
+#p
 func _physics_process(delta):
+	
+	if time_cold > 0:
+		time_cold -= delta
+		$barrel.time_cold = time_cold
+		$icon.material.set_shader_param("coldscale", true)
+		return
+	else:
+		$icon.material.set_shader_param("coldscale", false)
 	if Input.is_action_pressed("ui_down"):#если происходит нажатие кномки вниз
 		if abs(c_speed.y) < max_speed: #меняем скорость на ускорение * время смены кадров
 			c_speed.y +=acc * delta #изменяем скорость на текущую скорость - ускорение * на смену кадров
@@ -97,3 +108,9 @@ func _on_shooot_animation_finished():
 func add_bullet(new_bullet):
 	if new_bullet.type > bullet.type:
 		bullet = new_bullet
+
+
+
+func colding(long):
+	print(long / 10)
+	time_cold = long / 10

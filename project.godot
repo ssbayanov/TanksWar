@@ -11,12 +11,12 @@ config_version=4
 [application]
 
 config/name="TanksWar"
-run/main_scene="res://pogoda.tscn"
+run/main_scene="res://Scence/pogoda.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-g="*res://Global.gd"
+g="*res://Scripts/Global.gd"
 
 [display]
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Models/Dirt_and_road.tres" type="TileSet" id=1]
+[ext_resource path="res://Scripts/map.gd" type="Script" id=2]
+[ext_resource path="res://Scence/Mine.tscn" type="PackedScene" id=3]
+
+[node name="map" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ground" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+
+[node name="roads" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+
+[node name="Mine" parent="." instance=ExtResource( 3 )]
+position = Vector2( -576, -85 )
+type_of_explosion = 1
