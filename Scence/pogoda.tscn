@@ -57,9 +57,6 @@ margin_right = 1304.16
 margin_bottom = -189.029
 custom_fonts/font = SubResource( 2 )
 text = "Настройки"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="exet" type="Button" parent="."]
 margin_left = 345.045
@@ -69,9 +66,6 @@ margin_bottom = 625.01
 rect_pivot_offset = Vector2( 264.438, -236.62 )
 custom_fonts/font = SubResource( 3 )
 text = "Выход"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="if" type="Sprite" parent="."]
 visible = false
