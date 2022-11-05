@@ -17,4 +17,3 @@ format = 1
 
 [node name="Mine" parent="." instance=ExtResource( 3 )]
 position = Vector2( -576, -85 )
-type_of_explosion = 1
