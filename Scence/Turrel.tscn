@@ -96,20 +96,12 @@ margin_top = 30.0
 margin_right = 38.0
 margin_bottom = 45.0
 
-[node name="reloadprogress" type="ProgressBar" parent="Node2D"]
-margin_left = -32.0
-margin_top = 45.0
-margin_right = 38.0
-margin_bottom = 60.0
-value = 50.0
-
 [node name="Area2D" type="Area2D" parent="."]
 rotation = -1.57079
 scale = Vector2( 0.595127, -0.609045 )
 
-[node name="RayCast2D" type="RayCast2D" parent="Area2D"]
-rotation = -1.5708
-cast_to = Vector2( -1.64479, 465.447 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 25.2047, -1.64176, 332.704, -369.429, 334.381, 246.289 )
 
 [node name="boom_player" type="AnimatedSprite" parent="."]
 visible = false
