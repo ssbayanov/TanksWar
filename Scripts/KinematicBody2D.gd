@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+var minimap_icon = "Player"
 var max_speed = 1000 #максимальная скорость танка
 var acc = 100 #замедление танка (accsiliration)
 var dec = 1000 #ускорение танка
@@ -22,7 +22,7 @@ func _ready():
 
 func _process(delta):
 	_shoot_delayer_process(delta)
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept"):
 		_shoot()
 	$hpbar.set_global_rotation(0)
 

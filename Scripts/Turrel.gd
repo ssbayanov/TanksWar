@@ -4,7 +4,7 @@ extends KinematicBody2D
 var mindistance = 100
 var maxdistance = 500
 var player_tank 
-
+var minimap_icon = "Mob"
 
 var bullet
 var rot_speed = 70 #скорость поворота
@@ -27,21 +27,12 @@ func _ready():
 	
 	
 	
-func _process(delta):
-	if not player_tank:
-		return
-	_shoot_delayer_process(delta)
-
-
-
-
 
 func _physics_process(delta):
 	if not player_tank:
 		return
 	var distance = (player_tank.position - position).rotated(PI/2)
-	global_rotation = lerp_angle(global_rotation,distance.angle(),delta)
-	
+	global_rotation = lerp_angle(global_rotation,distance.angle(),delta * 2)
 	_shoot_delayer_process(delta)
 	
 	
@@ -62,6 +53,8 @@ func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
+#		emit_signal("removed", self)
+		remove_from_group("minimap_objects")
 		boom()
 	if hp > 100:
 		hp = 100
