@@ -4,7 +4,7 @@ extends Node2D
 func _ready():
 	get_data_for_player()
 	$CanvasLayer/MiniMap.set_map($map)
-
+	$CanvasLayer/MiniMap.set_player($player)
 
 
 func get_data_for_player():
@@ -12,3 +12,4 @@ func get_data_for_player():
 	for i in enemy:
 		print('it is print enemy', enemy)
 		i.player_tank = $player
+

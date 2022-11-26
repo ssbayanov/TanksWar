@@ -5,7 +5,7 @@
 
 [node name="MiniMap" type="VBoxContainer"]
 margin_right = 256.0
-margin_bottom = 274.0
+margin_bottom = 256.0
 rect_min_size = Vector2( 256, 256 )
 script = ExtResource( 5 )
 
@@ -13,25 +13,33 @@ script = ExtResource( 5 )
 margin_right = 256.0
 margin_bottom = 14.0
 text = "ZOOM- d"
+align = 1
 
-[node name="PlayerMarker" type="Sprite" parent="."]
-position = Vector2( 233.333, 38 )
-rotation = 1.5708
-scale = Vector2( 0.03, 0.03 )
-z_index = 5
-texture = ExtResource( 4 )
-
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
+[node name="Control" type="CenterContainer" parent="."]
 margin_top = 18.0
 margin_right = 256.0
 margin_bottom = 274.0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Control"]
+margin_right = 256.0
+margin_bottom = 256.0
 rect_min_size = Vector2( 256, 256 )
 
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="Control/ViewportContainer"]
 size = Vector2( 256, 256 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Camera2D" type="Camera2D" parent="ViewportContainer/Viewport"]
+[node name="Camera2D" type="Camera2D" parent="Control/ViewportContainer/Viewport"]
 position = Vector2( 10, 0 )
 current = true
+
+[node name="PlayerMarker" type="TextureRect" parent="Control"]
+margin_left = 113.0
+margin_top = 113.0
+margin_right = 143.0
+margin_bottom = 143.0
+rect_min_size = Vector2( 30, 30 )
+rect_pivot_offset = Vector2( 15, 15 )
+texture = ExtResource( 4 )
+expand = true
