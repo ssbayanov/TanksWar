@@ -5,7 +5,6 @@ var mindistance = 100
 var maxdistance = 500
 var player_tank 
 
-
 var bullet
 var rot_speed = 70 #скорость поворота
 var shoot_delayer = 1
@@ -14,10 +13,6 @@ var can_shoot = 0
 
 
 var barrel = true
-var time_cold = 0
-var blindness = 0
-
-onready var trackRes = load("res://Scence/track.tscn")
 
 func _ready():
 	bullet = load("res://Scence/bullet1.tscn").instance()
@@ -28,32 +23,15 @@ func _ready():
 	
 	
 	
-func _process(delta):
-	if not player_tank:
-		return
-	if time_cold > 0:
-		return
-	_shoot_delayer_process(delta)
-
-
-
 
 func _physics_process(delta):
-	if time_cold > 0:
-		time_cold -= delta
-		$tank_npc.material.set_shader_param("coldscale", true)
-		return
-	else:
-		$tank_npc.material.set_shader_param("coldscale", false)
 	if not player_tank:
 		return
 	var distance = (player_tank.position - position).rotated(PI/2)
+	global_rotation = lerp_angle(rotation,distance.angle(),delta * 3)
+	_shoot_delayer_process(delta)
 	
-	if blindness <= 0:
-		global_rotation = lerp_angle(global_rotation,distance.angle(),delta)
-	else:
-		blindness -= delta
-	
+
 	
 func damage_hp(amount):
 	change_hp(-amount)
@@ -72,6 +50,8 @@ func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
+#		emit_signal("removed", self)
+		remove_from_group("minimap_objects")
 		boom()
 	if hp > 100:
 		hp = 100
@@ -129,7 +109,7 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_Area2D_body_exited(body):
-	can_shoot = 1
+	can_shoot -= 1
 
 
 func _on_boom_player_animation_finished():
@@ -143,11 +123,3 @@ func _on_shooot_animation_finished():
 func _on_shooot2_animation_finished():
 	$shooot2.set_frame(0)
 	$shooot2.hide()
-
-
-func colding(long):
-	print(long / 10)
-	time_cold = long / 10
-
-func flashing(time):
-	blindness = time

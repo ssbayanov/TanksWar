@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Saunds/Игра денди - Танчики (www.hotplayer.ru).mp3" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/main.gd" type="Script" id=2]
@@ -7,7 +7,10 @@
 [ext_resource path="res://Scence/treegreen.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scence/bullet2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scence/Turrel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scence/KinematicBody2D.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scence/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scence/MiniMap.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scence/tanknpc.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scence/Console.tscn" type="PackedScene" id=11]
 
 [node name="main" type="Node2D"]
 position = Vector2( 0, -5.33936 )
@@ -17,19 +20,35 @@ __meta__ = {
 "_edit_vertical_guides_": [ -718.904 ]
 }
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MiniMap" parent="CanvasLayer" instance=ExtResource( 9 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -266.0
+margin_top = -266.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Console" parent="CanvasLayer" instance=ExtResource( 11 )]
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 1 )
 
 [node name="map" parent="." instance=ExtResource( 3 )]
+position = Vector2( -49.3501, -13.6103 )
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-position = Vector2( -580.024, -61.9926 )
+position = Vector2( -252.519, -6.69852 )
 
 [node name="box" parent="." instance=ExtResource( 4 )]
 position = Vector2( 54.9719, -51.7803 )
 
 [node name="bullet2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 93.6646, 12.8146 )
+shoot_delay = 0.01
 is_object = true
 
 [node name="treegreen" parent="." instance=ExtResource( 5 )]
@@ -40,4 +59,7 @@ position = Vector2( 292.55, -15.111 )
 is_small = true
 
 [node name="Turrel" parent="." instance=ExtResource( 7 )]
-position = Vector2( -516.574, -80.8429 )
+position = Vector2( -269.823, 72.4726 )
+
+[node name="tanknpc" parent="." instance=ExtResource( 10 )]
+position = Vector2( 661.756, 353.476 )
