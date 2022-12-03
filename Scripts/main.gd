@@ -3,6 +3,11 @@ extends Node2D
 
 func _ready():
 	get_data_for_player()
+	
+	var data = {
+		'body' : g.tanks['the_biggest_tank']
+	}
+	$player.set_params(data)
 
 
 
