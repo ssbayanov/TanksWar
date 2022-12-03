@@ -1,5 +1,6 @@
 extends Control
 var eneble:bool = false
+var back_command
 
 
 
@@ -18,7 +19,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("show_console"): eneble = !eneble; get_tree().paused = eneble; if eneble == true: show(); else: hide() # Включение и отключение кнцоли.
 	if Input.is_action_just_pressed("accept") and eneble == true and $LineEdit.text != "": 
 		write(time_return + "-" + $LineEdit.text)
-		$LineEdit.text = ""; 
+		if $LineEdit.text[0] == "/":
+			back_command = $LineEdit.text
+		$LineEdit.text = "";
 
 	
 			

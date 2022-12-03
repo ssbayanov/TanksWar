@@ -13,6 +13,9 @@ var hp = 100
 var len_track = 0
 var track_step = 10
 
+# Console
+var god_mode = false
+
 onready var trackRes = load("res://Scence/track.tscn")
 
 func _ready():
@@ -25,6 +28,12 @@ func _process(delta):
 	if Input.is_action_pressed("ui_accept"):
 		_shoot()
 	$hpbar.set_global_rotation(0)
+	
+	# Console
+	if g.get_back_command() == "/god": 
+		god_mode = !god_mode;
+		g.print("бесмертие персонажа переведено в режим - " + str(god_mode))
+	
 
 #p
 func _physics_process(delta):
@@ -56,7 +65,7 @@ func _physics_process(delta):
 	c_speed.x = 0
 	
 func damage_hp(amount):
-	change_hp(-amount)
+	if god_mode == false: change_hp(-amount)
 	
 func change_hp(amount):
 	hp +=amount

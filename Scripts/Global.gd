@@ -16,6 +16,14 @@ func rand_rangei(start, stop):
 
 
 
+
+func get_back_command():
+	var p = console.back_command
+	console.back_command = null
+	if console == null:
+		print("error: Console dont't init.")
+		return "error: Console dont't init." 
+	return p
 func print(info):
 	if console == null:
 		print("error: Console dont't init.")
