@@ -12,7 +12,6 @@ config_version=4
 
 config/name="TanksWar"
 run/main_scene="res://Scence/pogoda.tscn"
-config/icon="res://icon.png"
 
 [autoload]
 

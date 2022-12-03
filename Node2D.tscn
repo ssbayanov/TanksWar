@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/tankBody_red_outline.png" type="Texture" id=1]
+[ext_resource path="res://Images/tankBody_huge_outline.png" type="Texture" id=2]
+[ext_resource path="res://Images/tankBody_bigRed_outline.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 702.0
+margin_top = 436.0
+margin_right = 882.0
+margin_bottom = 625.0
+items = [ "0", ExtResource( 1 ), false, "1", ExtResource( 2 ), false, "2", ExtResource( 3 ), false ]
+fixed_column_width = 2
