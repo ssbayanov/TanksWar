@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+var minimap_icon = "Player"
 var max_speed = 1000 #максимальная скорость танка
 var acc = 100 #замедление танка (accsiliration)
 var dec = 1000 #ускорение танка
@@ -14,6 +14,10 @@ var len_track = 0
 var track_step = 10
 
 var time_cold = 0
+
+# Console
+var god_mode = false
+
 onready var trackRes = load("res://Scence/track.tscn")
 
 func _ready():
@@ -25,9 +29,15 @@ func _process(delta):
 	if time_cold > 0:
 		return
 	_shoot_delayer_process(delta)
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept"):
 		_shoot()
 	$hpbar.set_global_rotation(0)
+	
+	# Console
+	if g.get_back_command() == "/god": 
+		god_mode = !god_mode;
+		g.print("бесмертие персонажа переведено в режим - " + str(god_mode))
+	
 
 #p
 func _physics_process(delta):
@@ -67,7 +77,7 @@ func _physics_process(delta):
 	c_speed.x = 0
 	
 func damage_hp(amount):
-	change_hp(-amount)
+	if god_mode == false: change_hp(-amount)
 	
 func change_hp(amount):
 	hp +=amount

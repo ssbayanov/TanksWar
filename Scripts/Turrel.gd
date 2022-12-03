@@ -5,7 +5,6 @@ var mindistance = 100
 var maxdistance = 500
 var player_tank 
 
-
 var bullet
 var rot_speed = 70 #скорость поворота
 var shoot_delayer = 1
@@ -14,48 +13,28 @@ var can_shoot = 0
 
 
 var barrel = true
-var time_cold = 0
-var blindness = 0
-
 
 func _ready():
 	bullet = load("res://Scence/bullet1.tscn").instance()
 	change_hp(0)
 	
 	
+	
+	
+	
+	
+
 func _physics_process(delta):
-	if time_cold > 0:
-		time_cold -= delta
-		$tank_npc.material.set_shader_param("coldscale", true)
-		return
-	else:
-		$tank_npc.material.set_shader_param("coldscale", false)
-		
 	if not player_tank:
 		return
-		
-	var distance = (player_tank.global_position - global_position).rotated(PI * 0.5)
+	var distance = (player_tank.position - position).rotated(PI/2)
+	global_rotation = lerp_angle(rotation,distance.angle(),delta * 3)
+	_shoot_delayer_process(delta)
 	
-	if blindness <= 0:
-		
-		global_rotation = lerp_angle(global_rotation, distance.angle(), delta * 2)
-		
 
-		
-		if abs(rad2deg(global_rotation - distance.angle())) < 0.05:
-			global_rotation = distance.angle()
-			
-		$Node2D.set_global_rotation(0)
-		if can_shoot > 0:
-			_shoot() 
-		shoot_delayer += delta
-	else:
-		blindness -= delta
-	
 	
 func damage_hp(amount):
 	change_hp(-amount)
-	
 	
 func boom():
 	hp = 0
@@ -63,6 +42,7 @@ func boom():
 	$boom_player.play()
 	$CollisionShape2D.disabled = true
 	player_tank = null
+	$Node2D/reloadprogress.hide()
 	$tank_npc.material.set_shader_param("grayscale", true)
 	
 	
@@ -70,20 +50,41 @@ func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
+#		emit_signal("removed", self)
+		remove_from_group("minimap_objects")
 		boom()
 	if hp > 100:
 		hp = 100
 	$Node2D/hpbar.set_value(hp)
 	
 	
+
+
+	
+	
+	 
+func _shoot_delayer_process(delta):
+	if shoot_delayer < 1:
+		shoot_delayer += delta 
+		$Node2D/reloadprogress.set_value(shoot_delayer*100)
+		$Node2D/reloadprogress.show()
+	else:
+		shoot_delayer = 1
+		$Node2D/reloadprogress.hide()
+	
+	$Node2D.set_global_rotation(0)
+	if can_shoot > 0:
+		_shoot() 
+	
+	
+	
+	
+	
 func _shoot():
-	print("нет возможности стрелять")
 	if shoot_delayer >= bullet.shoot_delay:
-		
 		var newbullet = bullet.duplicate()
 		get_parent().add_child(newbullet)
 		newbullet.shoot_delay = 0.2
-		#newbullet.player = player_tank
 		if barrel:
 			$shooot.show()
 			$shooot.play("default")
@@ -97,6 +98,11 @@ func _shoot():
 		newbullet.is_object=false
 		shoot_delayer = 0
 	
+
+	
+
+
+
 
 func _on_Area2D_body_entered(body):
 	can_shoot += 1
@@ -117,11 +123,3 @@ func _on_shooot_animation_finished():
 func _on_shooot2_animation_finished():
 	$shooot2.set_frame(0)
 	$shooot2.hide()
-
-
-func colding(long):
-	print(long / 10)
-	time_cold = long / 10
-
-func flashing(time):
-	blindness = time

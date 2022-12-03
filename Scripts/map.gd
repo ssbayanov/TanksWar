@@ -10,6 +10,8 @@ var is_sand_on_top_or_left = false
 
 var size = Vector2()
 
+
+
 enum ROAD {
 	VERTICAL,
 	HORISONTAL,
@@ -48,6 +50,8 @@ enum TILE {
 }
 
 func _ready():
+	g.Tilemap = $ground
+	
 	size.x = g.rand_rangei(min_width, max_width)
 	size.y = g.rand_rangei(min_height, max_height)
 

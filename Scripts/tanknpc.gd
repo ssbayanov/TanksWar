@@ -1,10 +1,9 @@
 extends KinematicBody2D
 
-
+var minimap_icon = "Mob"
 var mindistance = 100
 var maxdistance = 500
 var player_tank 
-
 var max_speed = 500 #максимальная скорость танка
 var acc = 100 #замедление танка (accsiliration)
 var dec = 300 #ускорение танка
@@ -29,6 +28,7 @@ onready var trackRes = load("res://Scence/track.tscn") # нужно
 func _ready():
 	bullet = load("res://Scence/bullet1.tscn").instance()
 	change_hp(0)
+	g.print("hello")
 	
 	
 	
@@ -85,6 +85,8 @@ func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
+		#signal("remove_turrel")
+		remove_from_group("minimap_objects")
 		boom()
 	if hp > 100:
 		hp = 100

@@ -44,7 +44,7 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[node name="Turrel" type="KinematicBody2D" groups=["enemy"]]
+[node name="Turrel" type="KinematicBody2D" groups=["enemy", "minimap_objects"]]
 script = ExtResource( 9 )
 
 [node name="tank_npc" type="Sprite" parent="."]
@@ -87,14 +87,20 @@ position = Vector2( 6, -23 )
 scale = Vector2( 0.609045, -0.595127 )
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 1, 0 )
-scale = Vector2( 0.609045, -0.595127 )
+scale = Vector2( 0.6, 0.6 )
 
 [node name="hpbar" type="ProgressBar" parent="Node2D"]
 margin_left = -32.0
-margin_top = 30.0
+margin_top = -40.0
 margin_right = 38.0
-margin_bottom = 45.0
+margin_bottom = -25.0
+
+[node name="reloadprogress" type="ProgressBar" parent="Node2D"]
+margin_left = -32.0
+margin_top = -56.0
+margin_right = 38.0
+margin_bottom = -41.0
+value = 50.0
 
 [node name="Area2D" type="Area2D" parent="."]
 rotation = -1.57079
