@@ -11,8 +11,8 @@ func _ready(): for e in enemy_list: add_marker(e)
 
 # функции подгрусски данных
 func set_map(m):
-	viewport.add_child(m.get_node("ground").duplicate());
-	viewport.add_child(m.get_node("roads").duplicate());
+	viewport.add_child(m.get_node("Ground").duplicate());
+	viewport.add_child(m.get_node("Roads").duplicate());
 func set_player(p): player = p;
 
 

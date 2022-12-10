@@ -31,8 +31,8 @@ func _ready():
 func set_params(params):
 	$icon.set_texture(load(params['body']['sprite']))
 	max_speed = params['body']['speed']
-	acc = params['body']['acc']
-	dec = params['body']['dec']
+#	acc = params['body']['acc']
+#	dec = params['body']['dec']
 	rot_speed = max_speed / 10
 	hp = params['body']['hp']
 	
