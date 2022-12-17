@@ -19,7 +19,6 @@ var track_step = 10
 var time_cold = 0
 
 # Console
-var god_mode = false
 
 onready var trackRes = load("res://Scence/track.tscn")
 
@@ -46,10 +45,7 @@ func _process(delta):
 		_shoot()
 	$hpbar.set_global_rotation(0)
 	
-	# Console
-	if g.get_back_command() == "/god": 
-		god_mode = !god_mode;
-		g.print("бесмертие персонажа переведено в режим - " + str(god_mode))
+
 	
 
 #p
@@ -63,11 +59,11 @@ func _physics_process(delta):
 	else:
 		$icon.material.set_shader_param("coldscale", false)
 	if Input.is_action_pressed("ui_down"):#если происходит нажатие кномки вниз
-		if abs(c_speed.y) < max_speed: #меняем скорость на ускорение * время смены кадров
-			c_speed.y +=acc * delta #изменяем скорость на текущую скорость - ускорение * на смену кадров
+		if abs(c_speed.y) < max_speed * g.speed_coff: #меняем скорость на ускорение * время смены кадров
+			c_speed.y +=acc * delta * g.speed_coff #изменяем скорость на текущую скорость - ускорение * на смену кадров
 	elif Input.is_action_pressed("ui_up"):#если происходит нажатие кномки в верх
-		if abs(c_speed.y) < max_speed: #меняем скорость на ускорение * время смены кадров
-			c_speed.y -=acc * delta #изменяем скорость на текущую скорость - ускорение * на смену кадров
+		if abs(c_speed.y) < max_speed * g.speed_coff: #меняем скорость на ускорение * время смены кадров
+			c_speed.y -=acc * delta * g.speed_coff #изменяем скорость на текущую скорость - ускорение * на смену кадров
 	else:
 		if abs(c_speed.y) > 0:
 			c_speed.y -= (dec * delta) * c_speed.y / abs(c_speed.y)
@@ -90,7 +86,7 @@ func _physics_process(delta):
 	c_speed.x = 0
 	
 func damage_hp(amount):
-	if god_mode == false: change_hp(-amount)
+	if g.god_mode == false: change_hp(-amount)
 	
 func change_hp(amount):
 	hp +=amount

@@ -20,6 +20,7 @@ func _on_start_pressed():
 	var game = preload("res://Scence/main.tscn").instance()
 	get_tree().get_root().add_child(game)
 	hide()
+	g.game = game
 
 
 func _on_options_pressed():

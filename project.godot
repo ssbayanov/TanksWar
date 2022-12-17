@@ -12,6 +12,7 @@ config_version=4
 
 config/name="TanksWar"
 run/main_scene="res://Scence/pogoda.tscn"
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -80,6 +81,13 @@ show_console={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":96,"unicode":0,"echo":false,"script":null)
  ]
+}
+
+[locale]
+
+translations=PoolStringArray(  )
+locale_filter=[ 1, [  ] ]
+translation_remaps={
 }
 
 [physics]

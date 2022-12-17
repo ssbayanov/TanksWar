@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://1616531838_26-p-voennii-fon-dlya-prezentatsii-30.jpg" type="Texture" id=1]
+[ext_resource path="res://Scence/Console.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/pogoda.gd" type="Script" id=2]
 [ext_resource path="res://Models/ofont.ru_Godzilla.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://pixil-frame-0 (34).png" type="Texture" id=4]
 [ext_resource path="res://PermanentMarker-Regular.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -39,7 +38,6 @@ __meta__ = {
 [node name="1620209182_39-phonoteka_org-p-fon-dlya-sozdaniya-igri-46" type="Sprite" parent="."]
 position = Vector2( 715.845, 180.311 )
 scale = Vector2( 0.691221, 0.677656 )
-texture = ExtResource( 4 )
 
 [node name="start" type="Button" parent="."]
 margin_left = 278.845
@@ -80,7 +78,6 @@ visible = false
 self_modulate = Color( 1, 0.992157, 0.992157, 1 )
 position = Vector2( 1851.84, 30.311 )
 scale = Vector2( 1.45622, 1.45622 )
-texture = ExtResource( 1 )
 offset = Vector2( -872.698, 105.48 )
 
 [node name="no" type="Button" parent="if"]
@@ -111,6 +108,10 @@ margin_bottom = -121.562
 rect_scale = Vector2( 0.6, 0.6 )
 custom_fonts/font = SubResource( 5 )
 text = "Вы действительно хотити выйти из игры?"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Console" parent="CanvasLayer" instance=ExtResource( 1 )]
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="exet" to="." method="_on_exet_pressed"]

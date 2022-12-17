@@ -2,6 +2,12 @@ extends Node
 var console = null
 var Tilemap = null 
 
+# Console
+var god_mode:bool = false
+var speed_coff:int = 1
+
+var game
+
 var tanks = {
 	'standart':{
 		'sprite': "res://Images/tankBody_dark.png",
@@ -85,13 +91,6 @@ func rand_rangei(start, stop):
 		#поменять танка "res://Images/tankBody_dark_outline.png"
 		
 	
-func get_back_command():
-	var p = console.back_command
-	console.back_command = null
-	if console == null:
-		print("error: Console dont't init.")
-		return "error: Console dont't init." 
-	return p
 func print(info):
 	if console == null:
 		print("error: Console dont't init.")
@@ -101,4 +100,7 @@ func print(info):
 func Get_Console(info):
 	console = info
 	console.write(time_return + "-" + "Console_conected")
+
+
+
 
