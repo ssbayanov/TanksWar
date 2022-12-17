@@ -37,7 +37,7 @@ __meta__ = {
 }
 
 [node name="1620209182_39-phonoteka_org-p-fon-dlya-sozdaniya-igri-46" type="Sprite" parent="."]
-position = Vector2( 715.845, 180.311 )
+position = Vector2( 765.845, 211.311 )
 scale = Vector2( 0.691221, 0.677656 )
 texture = ExtResource( 4 )
 
