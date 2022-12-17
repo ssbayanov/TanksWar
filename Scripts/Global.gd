@@ -8,38 +8,45 @@ var tanks = {
 		'barrel_count': 1,
 		'hp': 100,
 		'speed': 1000,
+		'acc':100,
+		'dec': 1000,
 		'max_barrel_type': 1,
 		'barrel_pos': [
-			Vector2(775, 430),
-		]
-	},
-	'big_tank': {
-		'sprite': "res://Images/tankBody_darkLarge_outline.png",
-		'barrel_count': 2,
-		'hp': 150,
-		'speed': 700,
-		'max_barrel_type': 2,
-		'barrel_pos': [
-		Vector2(827, 415),
-		Vector2(847, 415),
-		]
-	},
-	'the_biggest_tank': {
-		'sprite': "res://Images/tankBody_huge_outline.png",
-		'barrel_count': 4,
-		'hp': 250,
-		'speed': 450,
-		'max_barrel_type': 3,
-		'barrel_pos': [
-		Vector2(-7, -9),
-		Vector2(7, -9),
-		Vector2(-7, 28),
-		Vector2(7, 28),
-		]
-	}
-}
+			Vector2(0, 0),
+   ]
+  },
+ 
+ 'big_tank': {
+  'sprite': "res://Images/tankBody_darkLarge_outline.png",
+  'barrel_count': 2,
+  'hp': 150,
+  'speed': 700,
+	'acc':60,
+	'dec': 1300,
+  'max_barrel_type': 2,
+  'barrel_pos': [
+   Vector2(-6, 0),
+   Vector2(5,  0),
+   ]
+  },
+ 'the_biggest_tank': {
+  'sprite': "res://Images/tankBody_huge_outline.png",
+  'barrel_count': 4,
+  'hp': 250,
+  'speed': 450,
+  'acc':50,
+  'dec': 1500,
+  'max_barrel_type': 3,
+  'barrel_pos': [
+   Vector2(-8, -21),
+   Vector2(8, -21),
+   Vector2(-8, 15),
+   Vector2(8, 15),
+   ]
+  }
+ }
 
-var barrel = {
+var barrels = {
 'barrel_low':{
 'cost': 500,
 'sprite': "res://Images/tankDark_barrel2_outline.png",

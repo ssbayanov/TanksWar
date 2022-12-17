@@ -5,6 +5,6 @@ func _ready():
 	pass
 	
 func set_barrel(barrel_name):
-	var barrel = g.barrel.get(barrel_name, null)
+	var barrel = g.barrels.get(barrel_name, null)
 	$Sprite.set_texture(load(barrel['sprite']))
 	
