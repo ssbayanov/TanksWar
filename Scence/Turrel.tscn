@@ -44,7 +44,7 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[node name="Turrel" type="KinematicBody2D" groups=["enemy"]]
+[node name="Turrel" type="KinematicBody2D" groups=["enemy", "minimap_objects"]]
 script = ExtResource( 9 )
 
 [node name="tank_npc" type="Sprite" parent="."]

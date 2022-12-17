@@ -4,7 +4,7 @@ extends KinematicBody2D
 var mindistance = 100
 var maxdistance = 500
 var player_tank 
-
+var minimap_icon = "Mob"
 
 var bullet
 var rot_speed = 70 #скорость поворота
@@ -70,6 +70,8 @@ func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
+#		emit_signal("removed", self)
+		remove_from_group("minimap_objects")
 		boom()
 	if hp > 100:
 		hp = 100

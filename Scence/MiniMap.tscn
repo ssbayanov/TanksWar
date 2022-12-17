@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Images/barrelBlack_top.png" type="Texture" id=1]
+[ext_resource path="res://Models/pngwing.com.png" type="Texture" id=2]
+[ext_resource path="res://Images/tileSand1.png" type="Texture" id=3]
+[ext_resource path="res://Models/blue-arrow-93.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/MiniMap.gd" type="Script" id=5]
+
+[node name="MiniMap" type="MarginContainer"]
+margin_right = 266.0
+margin_bottom = 266.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 5 )
+
+[node name="frame" type="NinePatchRect" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 261.0
+margin_bottom = 261.0
+texture = ExtResource( 2 )
+patch_margin_left = 128
+patch_margin_top = 128
+patch_margin_right = 128
+patch_margin_bottom = 128
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 261.0
+margin_bottom = 261.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="Grid" type="TextureRect" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 236.0
+margin_bottom = 236.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="PlayerMarker" type="Sprite" parent="MarginContainer/Grid"]
+position = Vector2( 100, 100 )
+rotation = 1.5708
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 4 )
+
+[node name="NpcMarker" type="Sprite" parent="MarginContainer/Grid"]
+visible = false
+position = Vector2( 41, 36 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[connection signal="gui_input" from="." to="." method="_on_MiniMap_gui_input"]
