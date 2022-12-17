@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Saunds/Игра денди - Танчики (www.hotplayer.ru).mp3" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/main.gd" type="Script" id=2]
@@ -8,9 +8,13 @@
 [ext_resource path="res://Scence/bullet2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scence/Turrel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scence/KinematicBody2D.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Node2D.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Barrel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://WoodBaricade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://animations/Barricade.tscn" type="PackedScene" id=12]
 
 [node name="main" type="Node2D"]
-position = Vector2( 0, -5.33936 )
+position = Vector2( 13, -40 )
 scale = Vector2( 1.56028, 1.59149 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -41,3 +45,16 @@ is_small = true
 
 [node name="Turrel" parent="." instance=ExtResource( 7 )]
 position = Vector2( -269.823, 72.4726 )
+
+[node name="Node2D" parent="." instance=ExtResource( 9 )]
+
+[node name="Barrel666" parent="." instance=ExtResource( 10 )]
+position = Vector2( 255.082, 58.4358 )
+scale = Vector2( 1.12818, 1.10053 )
+
+[node name="WoodBaricade" parent="." instance=ExtResource( 11 )]
+position = Vector2( 285.205, 118.128 )
+mass = 1370.2
+
+[node name="Barricade" parent="." instance=ExtResource( 12 )]
+position = Vector2( 321.737, 67.2326 )

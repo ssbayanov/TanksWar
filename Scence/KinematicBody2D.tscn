@@ -28,7 +28,9 @@ z_index = 2
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -14.0229, -19.315, 15.7091, -19.551, 20.4285, -14.5957, 19.7206, 16.3162, 14.7652, 20.5637, -13.315, 20.3277, -21.102, 14.1925, -20.866, -12.9439 )
+position = Vector2( -0.675664, -0.520681 )
+scale = Vector2( 0.963148, 1.0283 )
+polygon = PoolVector2Array( -12.7959, -20.8882, 14.1989, -21.8607, 23.5433, -15.0533, 23.5433, 16.066, 14.1989, 21.9009, -15.9107, 22.8734, -23.1785, 14.1211, -22.1402, -13.1084 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -55,7 +57,6 @@ margin_bottom = -31.0
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://Images/sandbagBeige_open.png" type="Texture" id=2]
+[ext_resource path="res://Images/sandbagBeige.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 21, 14 )
+
+[node name="sandbag" type="RigidBody2D"]
+position = Vector2( 94, 0 )
+script = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+scale = Vector2( 1.02286, 1.04079 )
+texture = ExtResource( 2 )
+
+[node name="SandBag" type="Sprite" parent="."]
+scale = Vector2( 1.29788, 1.30949 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_sandbag_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

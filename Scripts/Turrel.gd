@@ -7,7 +7,8 @@ var player_tank
 
 
 var bullet
-var rot_speed = 70 #скорость поворота
+var rot_speed = 300
+ #скорость поворота
 var shoot_delayer = 1
 var hp = 100
 var can_shoot = 0

@@ -13,6 +13,7 @@ var hp = 100
 var len_track = 0
 var track_step = 10
 
+var gravity = false
 onready var trackRes = load("res://Scence/track.tscn")
 
 func _ready():
@@ -50,8 +51,8 @@ func _physics_process(delta):
 		get_tree().root.add_child(t)
 		t.global_position = global_position 
 		t.global_rotation = global_rotation
-		
 	
+
 	c_speed = move_and_slide(c_speed.rotated(rotation)).rotated(-rotation)
 	c_speed.x = 0
 	
@@ -97,3 +98,10 @@ func _on_shooot_animation_finished():
 func add_bullet(new_bullet):
 	if new_bullet.type > bullet.type:
 		bullet = new_bullet
+
+
+
+func black_holding(pos_mine, gr):
+	gravity = gr
+	while gravity:
+		c_speed = Vector2.ZERO

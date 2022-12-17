@@ -39,7 +39,6 @@ func _process(delta):
 
 
 
-
 func _physics_process(delta):
 	if not player_tank:
 		return
