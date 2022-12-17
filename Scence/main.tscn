@@ -31,6 +31,7 @@ margin_left = -266.0
 margin_top = -266.0
 margin_right = 0.0
 margin_bottom = 0.0
+KinematicBody2D = NodePath("../../player")
 
 [node name="Console" parent="CanvasLayer" instance=ExtResource( 11 )]
 
