@@ -28,6 +28,7 @@ onready var trackRes = load("res://Scence/track.tscn") # нужно
 func _ready():
 	bullet = load("res://Scence/bullet1.tscn").instance()
 	change_hp(0)
+	g.print("hello")
 	
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Saunds/Игра денди - Танчики (www.hotplayer.ru).mp3" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/main.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scence/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scence/MiniMap.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scence/tanknpc.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scence/Console.tscn" type="PackedScene" id=11]
 
 [node name="main" type="Node2D"]
 position = Vector2( 0, -5.33936 )
@@ -31,6 +32,8 @@ margin_top = -266.0
 margin_right = 0.0
 margin_bottom = 0.0
 KinematicBody2D = NodePath("../../player")
+
+[node name="Console" parent="CanvasLayer" instance=ExtResource( 11 )]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 1 )

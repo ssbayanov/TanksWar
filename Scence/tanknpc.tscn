@@ -41,9 +41,6 @@ animations = [ {
 [node name="tanknpc" type="KinematicBody2D" groups=["enemy", "minimap_objects"]]
 position = Vector2( 6.74493, -1.12247 )
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="tank_npc" type="Sprite" parent="."]
 material = SubResource( 2 )
