@@ -4,6 +4,7 @@ extends KinematicBody2D
 var mindistance = 100
 var maxdistance = 500
 var player_tank 
+var minimap_icon = "Mob"
 
 var bullet
 var rot_speed = 70 #скорость поворота
