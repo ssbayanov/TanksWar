@@ -118,7 +118,8 @@ func _shoot():
 		newbullet.global_position = $barrel/BulletPosition2D.global_position
 		newbullet.global_rotation = $barrel/Sprite.global_rotation
 		newbullet.is_object = false
-		shoot_delayer = 0
+		newbullet.c_speed = c_speed.rotated(rotation)
+		shoot_delayer = -0.7
 		$barrel/shooot.play("default")
 		$barrel/shooot.show()
 		
@@ -131,8 +132,7 @@ func _on_shooot_animation_finished():
 func add_bullet(new_bullet):
 	if new_bullet.type > bullet.type:
 		bullet = new_bullet
-
-
+		
 
 func colding(long):
 	print(long / 10)
