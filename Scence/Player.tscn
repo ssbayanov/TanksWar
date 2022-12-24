@@ -13,7 +13,6 @@ shader = ExtResource( 7 )
 shader_param/grayscale = false
 shader_param/coldscale = false
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.964706, 0.0313726, 0.0313726, 1 )
 
