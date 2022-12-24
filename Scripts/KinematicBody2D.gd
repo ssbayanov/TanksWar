@@ -119,7 +119,7 @@ func _shoot():
 		newbullet.global_rotation = $barrel/Sprite.global_rotation
 		newbullet.is_object = false
 		newbullet.c_speed = c_speed.rotated(rotation)
-		shoot_delayer = 0
+		shoot_delayer = -0.7
 		$barrel/shooot.play("default")
 		$barrel/shooot.show()
 		
