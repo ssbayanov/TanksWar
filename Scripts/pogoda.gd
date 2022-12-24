@@ -18,7 +18,7 @@ func _process(delta):
 func _on_start_pressed():
 	var game = preload("res://Scence/main.tscn").instance()
 	get_tree().get_root().add_child(game)
-	game.set_tank_params()
+	game.set_tank_params($Customise.tank_params)
 	hide()
 
 

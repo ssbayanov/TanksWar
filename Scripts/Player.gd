@@ -30,7 +30,7 @@ func _ready():
 	$icon.set_texture(load(texture_tank))
 	
 func set_params(params):
-	var body = params['body']
+	var body = g.tanks[params['body']]
 	$icon.set_texture(load(body['sprite']))
 	max_speed = body['speed']
 #	acc = params['body']['acc']

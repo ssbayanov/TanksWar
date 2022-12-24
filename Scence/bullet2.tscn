@@ -54,6 +54,7 @@ shape = SubResource( 2 )
 anims/BIGBOOM = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="AnimationPlayer"]
+visible = false
 texture = ExtResource( 4 )
 
 [connection signal="body_entered" from="sens" to="." method="_on_sens_body_entered"]
