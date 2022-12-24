@@ -5,7 +5,8 @@ func _ready():
 	get_data_for_player()
 	
 	var data = {
-		'body' : g.tanks['the_biggest_tank']
+		'body' : g.tanks['the_biggest_tank'],
+		'barrels' : g.barrels['barrel_high']
 	}
 	$player.set_params(data)
 
