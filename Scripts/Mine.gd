@@ -13,8 +13,12 @@ func _process(delta):
 	if object == []:
 		return
 	for obj in object:
+		if obj != null: break
 		var leng = abs((global_position - obj.global_position).length())
-		$Mina.modulate.a = 15 / leng
+		if leng != 0:
+			$Mina.modulate.a = 15 / leng
+		else:
+			$Mina.modulate.a = 255
 		if leng >= detonation_distance:
 			return
 		time += delta

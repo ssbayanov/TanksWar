@@ -3,6 +3,7 @@ extends Node2D
 onready var map = $map
 
 func _ready():
+	rand_seed(map.map_seed)
 	get_data_for_player()
 	
 	var data = {
@@ -23,10 +24,14 @@ func get_data_for_player():
 		i.player_tank = $player
 
 
+func rand_rangei(start, stop):
+	if start == stop:
+		return start
+	return randi() % int((stop - start)) + int(start)
 	
 func generate_objects():
 	generate_tree()
-
+	generate_mines()
 
 func generate_tree(cofficente_abaut:int = -1, cofficente_to:int = -0.58):
 	var noise = map.get_noise(map.size, 50)
@@ -37,6 +42,18 @@ func generate_tree(cofficente_abaut:int = -1, cofficente_to:int = -0.58):
 				print(tile)
 				var object = load("res://Scence/treegreen.tscn").instance()
 				$objects/tree.add_child(object)
-				object.global_position = Vector2(x * 64 + 32, y * 64 + 32)
+				object.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
 	
-	
+func generate_mines(chance:int = 100):
+	var chance_sum = 0
+	rand_seed(map.map_seed)
+	for x in range(map.size.x):
+		for y in range(map.size.y):
+			chance_sum += rand_range(1, 100)
+			if chance_sum >= 100:
+				chance_sum = 0
+				
+				var object = load("res://Scence/Mine.tscn").instance()
+				$objects/Mines.add_child(object)
+				object.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
+				print("я хомяк")
