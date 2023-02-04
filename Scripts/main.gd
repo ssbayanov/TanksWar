@@ -44,16 +44,16 @@ func generate_tree(cofficente_abaut:int = -1, cofficente_to:int = -0.58):
 				$objects/tree.add_child(object)
 				object.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
 	
-func generate_mines(chance:int = 100):
-	var chance_sum = 0
+func generate_mines():
+	var position_mine = []
+	var caunt = rand_rangei(100, 1000)
 	rand_seed(map.map_seed)
-	for x in range(map.size.x):
-		for y in range(map.size.y):
-			chance_sum += rand_range(1, 100)
-			if chance_sum >= 100:
-				chance_sum = 0
-				
-				var object = load("res://Scence/Mine.tscn").instance()
-				$objects/Mines.add_child(object)
-				object.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
-				print("я хомяк")
+	for i in range(caunt):
+		var x = rand_rangei(0, map.size.x)
+		var y = rand_rangei(0, map.size.y)
+		var object = load("res://Scence/Mine.tscn").instance()
+		g.print(object.name)
+		object.type_of_explosion = rand_rangei(0, 3)
+		$objects/Mines.add_child(object)
+		object.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
+		g.print(caunt)
