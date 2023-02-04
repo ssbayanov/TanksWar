@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var count_press = 0
 var max_count_press = 3
@@ -10,10 +10,9 @@ var start
 var keys_tanks = g.tanks.keys()
 var keys_barrels = g.barrels.keys()
 
+var tank_params = {}
 
 func _ready():
-	
-
 	update_tank()
 
 # warning-ignore:unused_argument
@@ -22,6 +21,8 @@ func _ready():
 func update_tank():
 	var tank_type = keys_tanks[c_key]
 	var tank = g.tanks[tank_type]
+	tank_params['body'] = tank_type
+	
 	$castom/Tank.set_texture(load(tank['sprite']))
 	update_barrel()
 
@@ -66,6 +67,8 @@ func update_barrel():
 	var barrel = g.barrels[barrel_type]
 	var tank_type = keys_tanks[c_key]
 	var tank = g.tanks[tank_type]
+	tank_params['barrel'] = barrel_type
+	
 	var barrel_res = load("res://Scence/barrel.tscn")
 	if choose == false:
 #		print('aaaaaaaaaaaaaaaaa', tank['max_barrel_type'])
@@ -92,7 +95,8 @@ func update_barrel():
 		
 		var new_barrel = barrel_res.instance()
 		new_barrel.set_barrel(keys_barrels[c_key2])
-		new_barrel.set_position(tank['barrel_pos'][i])
+		new_barrel.set_position(tank['barrel_pos'][i] * $castom/Tank.scale.x + $castom/barrel.global_position)
+		new_barrel.scale = $castom/Tank.scale
 		add_child(new_barrel)
 		arr_b.append(new_barrel)
 	

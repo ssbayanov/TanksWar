@@ -2,12 +2,12 @@ extends KinematicBody2D
 
 export var shoot_delay = 0.7#через какой промежуток времени можно стрелять сново
 var player = null
-var speed =  1000#скорость пули
+var speed =  2000#скорость пули
+var c_speed = Vector2()
 var dammage = 10 # урон пули
 var startpos = 0
 var fly_time = 4
 var type = 1
-var c_speed = Vector2(0, -speed)
 export var is_object = false
 
 
@@ -22,13 +22,8 @@ func _process(delta):
 		return
 	else:
 		$collider.disabled = false
-	var collision = move_and_collide(c_speed.rotated(rotation)*delta, false)
-	var p
-	if player != null:
-		p = player.global_position.rotated(PI)
-		lerp_angle(global_rotation, p.angle(), delta * 20)
-	
-	
+
+	var collision = move_and_collide(c_speed * delta + (Vector2(0,-speed)).rotated(rotation)*delta, false)
 	
 	fly_time -= delta
 	
