@@ -24,7 +24,8 @@ var god_mode = false
 
 onready var trackRes = load("res://Scence/track.tscn")
 
-func _ready():	
+func _ready():
+	$icon.rotation_degrees = 0
 	add_bullet(load("res://Scence/bullet1.tscn").instance())
 	change_hp(0)
 	$icon.set_texture(load(texture_tank))
@@ -112,3 +113,24 @@ func add_bullet(new_bullet):
 func colding(long):
 	print(long / 10)
 	time_cold = long / 10
+
+func slowing(body):
+	var side = int(rand_range(1, 3))
+	var tick = int(rand_range(10, 100))
+	if side == 1:
+		$AnimationPlayer.play("rotating")
+		while tick:
+#			side = rand_range(1, 10)
+			body.global_rotation -= 1
+			tick -= 1
+#			if side == 3:
+#			if side == 3:
+#				break
+	else:
+		$AnimationPlayer.play("rotating_left")
+		while tick:
+#			side = rand_range(1, 10)
+			body.global_rotation += 1
+			tick -= 1
+#			if side == 3:
+#				break
