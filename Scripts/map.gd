@@ -302,8 +302,6 @@ func put_road(pos, tile = 10):
 
 	var tile_type
 	
-	
-
 	if ground_type == TILE.PLAIN:
 		if ground_autotile.y > 1:
 			tile_type = TILE.ROAD_SAND

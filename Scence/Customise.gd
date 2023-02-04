@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var count_press = 0
 var max_count_press = 3
@@ -95,7 +95,8 @@ func update_barrel():
 		
 		var new_barrel = barrel_res.instance()
 		new_barrel.set_barrel(keys_barrels[c_key2])
-		new_barrel.set_position(tank['barrel_pos'][i])
+		new_barrel.set_position(tank['barrel_pos'][i] * $castom/Tank.scale.x + $castom/barrel.global_position)
+		new_barrel.scale = $castom/Tank.scale
 		add_child(new_barrel)
 		arr_b.append(new_barrel)
 	
