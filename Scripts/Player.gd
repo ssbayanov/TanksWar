@@ -33,14 +33,14 @@ func _ready():
 func set_params(params):
 	var body = g.tanks[params['body']]
 	$icon.set_texture(load(body['sprite']))
+
 	max_speed = body['speed']
 #	acc = params['body']['acc']
 #	dec = params['body']['dec']
 	rot_speed = max_speed / 10
 	hp = body['hp']
 	
-	#for barrel in body['barrel_count']:
-		
+	barrels.set_params(params)
 	
 	
 func _process(delta):
