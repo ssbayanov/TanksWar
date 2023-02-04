@@ -3,7 +3,7 @@ extends Node2D
 var obj = null
 
 func _process(delta):
-	if !obj:
+	if obj == null:
 		return
 	
 	if 'hp' in obj:

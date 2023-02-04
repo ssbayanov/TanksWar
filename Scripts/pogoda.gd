@@ -16,6 +16,7 @@ func _on_start_pressed():
 	get_tree().get_root().add_child(game)
 	game.set_tank_params($Customise.tank_params)
 	hide()
+	g.game = game
 
 
 func _on_options_pressed():
