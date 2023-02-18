@@ -24,9 +24,14 @@ func damage_hp(amount):
 		$CollisionLarge.disabled = true
 		$CollisionSmall.disabled = true
 		$twings.show()
+		$TreeGreenLeaf.show()
+		$TreeGreenLeaf2.show()
+		$TreeGreenLeaf3.show()
+		$TreeGreenLeaf4.show()
+		$TreeGreenLeaf5.show()
+		$TreeGreenLeaf6.show()
 		if is_small:
 			$twings/twigs2.hide()
-			$twings/twigs3.hide()
 			
 		yield(get_tree().create_timer(5.0), "timeout")
 		queue_free()
