@@ -259,7 +259,7 @@ func generate_ground():
 		for y in range(size.y):
 			if x % 4:
 				var noise = OpenSimplexNoise.new()
-				print(noise.get_image(size.x, size.y).get_pixel(x, y))
+				# print(noise.get_image(size.x, size.y).get_pixel(x, y))
 			if noise.get_noise_2d(x, y) > 0:
 				set_cell($Ground, Vector2(x, y), 0, Vector2(0, g.rand_rangei(0, 2)))
 			else:

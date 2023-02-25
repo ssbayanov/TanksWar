@@ -39,7 +39,9 @@ func set_params(params):
 	rot_speed = max_speed / 10
 	hp = body['hp']
 	
+	var barrel = g.barrels[params['sprite']]
 	barrels.set_params(params)
+	print(params)
 	
 	
 func _process(delta):
