@@ -84,15 +84,15 @@ size = 120
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=12]
-size = 70
+size = 80
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=13]
-size = 150
+size = 80
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=14]
-size = 49
+size = 65
 outline_size = 1
 font_data = ExtResource( 1 )
 
@@ -305,17 +305,20 @@ custom_styles/panel = SubResource( 25 )
 [node name="ExitWindow" type="Sprite" parent="."]
 visible = false
 self_modulate = Color( 1, 0.992157, 0.992157, 1 )
-position = Vector2( 1510.84, -163.689 )
-scale = Vector2( 1.10278, 1.10278 )
+position = Vector2( 1839, 412 )
 texture = ExtResource( 3 )
 offset = Vector2( -872.698, 105.48 )
+region_enabled = true
+region_rect = Rect2( -98.8039, -46.4874, 1283.4, 516.878 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="no" type="Button" parent="ExitWindow"]
 margin_left = -783.47
 margin_top = 184.987
 margin_right = -561.47
 margin_bottom = 260.987
-rect_scale = Vector2( 2, 2 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -326,10 +329,10 @@ text = "нет"
 flat = true
 
 [node name="yes" type="Button" parent="ExitWindow"]
-margin_left = -1356.57
-margin_top = 146.901
-margin_right = -944.567
-margin_bottom = 352.901
+margin_left = -1316.0
+margin_top = 117.0
+margin_right = -903.997
+margin_bottom = 323.0
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -342,15 +345,17 @@ text = "да"
 flat = true
 
 [node name="Label" type="Label" parent="ExitWindow"]
-margin_left = -1417.0
-margin_top = -161.0
-margin_right = 559.0
-margin_bottom = 190.0
+margin_left = -1404.0
+margin_top = -25.0
+margin_right = 458.0
+margin_bottom = 326.0
 rect_scale = Vector2( 0.6, 0.6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 14 )
-text = "Вы действительно хотити выйти из игры?"
+text = "Вы действительно хотити 
+выйти из игры?"
+align = 1
 
 [connection signal="pressed" from="Customise/Panel/Left" to="Customise" method="_on_Left_pressed"]
 [connection signal="pressed" from="Customise/Panel/Right" to="Customise" method="_on_Right_pressed"]

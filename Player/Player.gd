@@ -21,11 +21,13 @@ var time_cold = 0
 # Console
 
 onready var trackRes = g.track
-onready var bullet_res = g.bullets[1]
+onready var bullet_res = g.bullets[0]
 
 func _ready():
 	$icon.rotation_degrees = 0
-	add_bullet(bullet_res.instance())
+	var bullet = bullet_res.instance()
+	bullet.is_object = true
+	add_bullet(bullet)
 	change_hp(0)
 
 
@@ -55,7 +57,7 @@ func set_params(params: Dictionary):
 	
 	
 func _process(delta):
-	g.print(global_position)
+#	g.print(global_position)
 	if time_cold > 0:
 		return
 
@@ -157,7 +159,7 @@ func add_bullet(new_bullet):
 	
 	
 func colding(long):
-	print(long / 10)
+#	print(long / 10)
 	time_cold = long / 10
 	
 	

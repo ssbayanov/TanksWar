@@ -8,7 +8,7 @@ var dammage = 10 # урон пули
 var startpos = 0
 var fly_time = 4
 var type = 1
-export var is_object = false
+export var is_object = true
 
 
 func _ready():

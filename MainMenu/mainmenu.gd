@@ -24,7 +24,7 @@ func _on_options_pressed():
 
 
 func _on_exet_pressed():
-	$if.show()
+	$ExitWindow.show()
 
 
 func _on_yes_pressed():
@@ -32,4 +32,4 @@ func _on_yes_pressed():
 
 
 func _on_no_pressed():
-	$if.hide()
+	$ExitWindow.hide()

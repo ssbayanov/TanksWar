@@ -107,7 +107,7 @@ rotation = -1.57079
 scale = Vector2( 0.595127, -0.609045 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( 25.2047, -1.64176, 332.704, -369.429, 334.381, 246.289 )
+polygon = PoolVector2Array( 25.2047, -1.64176, 536.022, -249.568, 536.018, 246.291 )
 
 [node name="boom_player" type="AnimatedSprite" parent="."]
 visible = false

@@ -44,7 +44,7 @@ func _physics_process(delta):
 		return
 	if timer >= 5:
 		data_for_forward = inaction()
-		print(data_for_forward)
+#		print(data_for_forward)
 		timer = 0
 		
 	global_rotation = lerp_angle(global_rotation,data_for_forward[0],delta * 5)

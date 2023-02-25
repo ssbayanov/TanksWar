@@ -81,12 +81,14 @@ func make_maze():
 	var stack = []
 	# fill the map with solid tiles
 	Map.clear()
-	for x in range(size.x):
-		for y in range(size.y):
-			put_road(Vector2(x, y), N|E|S|W)
+#	for x in range(size.x):
+#		for y in range(size.y):
+#			put_road(Vector2(x, y), N|E|S|W)
 	for x in range(0, size.x, step):
 		for y in range(0, size.y, step):
+			put_road(Vector2(x, y), N|E|S|W)
 			unvisited.append(Vector2(x, y))
+			
 	var current = Vector2(0, 0)
 	unvisited.erase(current)
 	# execute recursive backtracker algorithm
@@ -110,7 +112,7 @@ func make_maze():
 			unvisited.erase(current)
 		elif stack:
 			current = stack.pop_back()
-		#yield(get_tree(), 'idle_frame')
+#		yield(get_tree(), 'idle_frame')
 
 func erase_walls():
 	# randomly remove a number of the map's walls
@@ -131,7 +133,7 @@ func erase_walls():
 			var tile = 5 if neighbor.x != 0 else 10
 			for j in range(step - 1):
 				put_road(cell + neighbor/step * (j + 1) , tile)
-		yield(get_tree(), 'idle_frame')
+		#yield(get_tree(), 'idle_frame')
 
 
 
@@ -285,8 +287,7 @@ var road_autotile = {
 		12 : Vector2(4, 1),
 		13 : Vector2(6, 0),
 		14 : Vector2(7, 0),
-		15 : Vector2(-1, 0),
-
+		15 : Vector2(8, 0),
 	}
 	
 func get_tile(pos) -> int:
@@ -294,7 +295,7 @@ func get_tile(pos) -> int:
 	for key in road_autotile:
 		if road_autotile[key] == a_tile:
 			return key
-			
+	print("Warning on generate roads. Tile not found")
 	return -1
 
 func put_road(pos, tile = 10):
