@@ -100,7 +100,7 @@ func update_progressbar():
 func is_freeze(delta):
 	if time_cold > 0:
 		time_cold -= delta
-		$Barrel.time_cold = time_cold
+		#$Barrel.time_cold = time_cold
 		$icon.material.set_shader_param("coldscale", true)
 		return true
 

@@ -39,10 +39,11 @@ stream = ExtResource( 10 )
 position = Vector2( -252.519, -6.69852 )
 
 [node name="box" parent="." instance=ExtResource( 5 )]
-position = Vector2( 54.9719, -51.7803 )
+position = Vector2( 188, 94.3394 )
 
 [node name="bullet2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 93.6646, 12.8146 )
+is_object = true
 
 [node name="treegreen" parent="." instance=ExtResource( 3 )]
 position = Vector2( 192.055, -11.1167 )

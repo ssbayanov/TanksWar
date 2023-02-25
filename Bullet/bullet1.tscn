@@ -10,7 +10,7 @@ height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=2]
 
-[node name="bullet" type="KinematicBody2D"]
+[node name="bullet2" type="KinematicBody2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
