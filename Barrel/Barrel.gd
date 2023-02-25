@@ -54,5 +54,6 @@ func add_bullet(new_bullet):
 		bullet = new_bullet
 	
 	
-func set_type(type: Dictionary):
-	pass
+func set_type(type: String):
+	$Sprite.set_texture(load(g.barrels[type]['sprite']))
+

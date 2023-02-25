@@ -43,15 +43,14 @@ func generate_tree(cofficente_abaut:int = -1, cofficente_to:int = -0.58):
 
 
 func generate_mines():
-	var position_mine = []
-	var caunt = rand_rangei(100, 1000)
+	var caunt = rand_rangei(50, 100)
 	rand_seed(map.map_seed)
+	var object = load("res://Objects/Mine/Mine.tscn")
+	g.print(caunt)
 	for i in range(caunt):
+		var new_mine = object.instance()
 		var x = rand_rangei(0, map.size.x)
 		var y = rand_rangei(0, map.size.y)
-		var object = load("res://Objects/Mine/Mine.tscn").instance()
-		g.print(object.name)
-		object.type_of_explosion = rand_rangei(0, 3)
-		$objects/Mines.add_child(object)
-		object.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
-		g.print(caunt)
+		new_mine.type_of_explosion = rand_rangei(0, 3)
+		$objects/Mines.add_child(new_mine)
+		new_mine.global_position = Vector2((x * 64) + 32, (y * 64) + 32)

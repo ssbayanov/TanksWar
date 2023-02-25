@@ -35,7 +35,9 @@ func _process(delta):
 		var body = collision.collider 
 		if body.has_method("damage_hp"):
 			body.damage_hp(dammage)
-		get_parent().remove_child(self)
+			
+		if not body.has_method("_on_sens_body_entered"):
+			get_parent().remove_child(self)
 		
 		return
 
@@ -47,3 +49,4 @@ func _on_sens_body_entered(body):
 		if body.has_method("add_bullet"):
 			body.add_bullet(self)
 			get_parent().remove_child(self)
+			

@@ -21,7 +21,11 @@ func _ready():
 func update_tank():
 	var tank_type = keys_tanks[c_key]
 	var tank = g.tanks[tank_type]
+	var barrel_type = keys_barrels[c_key2]
+	var barrel = g.barrels[barrel_type]
+	
 	tank_params['body'] = tank_type
+	tank_params['barrel'] = barrel_type
 	
 	$castom/Tank.set_texture(load(tank['sprite']))
 	update_barrel()
@@ -94,7 +98,7 @@ func update_barrel():
 		print(i)
 		
 		var new_barrel = barrel_res.instance()
-		new_barrel.set_barrel(keys_barrels[c_key2])
+		new_barrel.set_type(keys_barrels[c_key2])
 		new_barrel.set_position(tank['barrel_pos'][i] * $castom/Tank.scale.x + $castom/barrel.global_position)
 		new_barrel.scale = $castom/Tank.scale
 		add_child(new_barrel)
