@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scence/Barrels.gd" type="Script" id=1]
 [ext_resource path="res://Saunds/00194.mp3" type="AudioStream" id=2]
 [ext_resource path="res://Images/tankBody_blue_outline.png" type="Texture" id=3]
 [ext_resource path="res://Barrel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scence/pogoda.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
 [ext_resource path="res://Models/Tunk.gdshader" type="Shader" id=7]
 
@@ -75,6 +76,8 @@ current = true
 [node name="drive" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( -87.3969, 91.8175 )
 stream = ExtResource( 2 )
+
+[node name="interfeise" parent="." instance=ExtResource( 5 )]
 
 [node name="hpbar" type="Node2D" parent="."]
 

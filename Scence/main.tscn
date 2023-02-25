@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Saunds/Игра денди - Танчики (www.hotplayer.ru).mp3" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/main.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://Scence/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scence/MiniMap.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scence/tanknpc.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scence/turellnpc.tscn" type="PackedScene" id=11]
+[ext_resource path="res://wfegr44huah.tscn" type="PackedScene" id=12]
+[ext_resource path="res://barecata.tscn" type="PackedScene" id=13]
 
 [node name="main" type="Node2D"]
 position = Vector2( 0, -5.33936 )
@@ -66,3 +69,21 @@ position = Vector2( 661.756, 353.476 )
 [node name="tree" type="Node2D" parent="objects"]
 
 [node name="Mines" type="Node2D" parent="objects"]
+
+[node name="wfegr44huah" parent="." instance=ExtResource( 12 )]
+position = Vector2( 40, 469.339 )
+
+[node name="barecata" parent="." instance=ExtResource( 13 )]
+position = Vector2( 400, 424.339 )
+
+[node name="tanknpc2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 279, 155.339 )
+
+[node name="tanknpc3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 82.7449, 353.217 )
+
+[node name="Turrel3" parent="." instance=ExtResource( 7 )]
+position = Vector2( -361, 533.339 )
+
+[node name="Turrel4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 801, 579.339 )

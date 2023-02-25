@@ -45,10 +45,15 @@ func set_params(params):
 func _process(delta):
 	if time_cold > 0:
 		return
-
+	
 	if Input.is_action_pressed("ui_accept"):
 		barrels.shoot()
 	$hpbar.set_global_rotation(0)
+	
+	$interfeise.show()
+	
+	if Input.is_action_just_pressed("exit "):
+		get_tree().paused = true
 	
 
 	
