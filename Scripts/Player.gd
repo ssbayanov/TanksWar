@@ -55,6 +55,7 @@ func set_params(params: Dictionary):
 	
 	
 func _process(delta):
+	g.print(global_position)
 	if time_cold > 0:
 		return
 
