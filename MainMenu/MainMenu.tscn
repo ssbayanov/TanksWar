@@ -1,0 +1,362 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://MainMenu/Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://MainMenu/mainmenu.gd" type="Script" id=2]
+[ext_resource path="res://MainMenu/Images/1616531838_26-p-voennii-fon-dlya-prezentatsii-30.jpg" type="Texture" id=3]
+[ext_resource path="res://MainMenu/Images/Panel.png" type="Texture" id=4]
+[ext_resource path="res://MainMenu/Fonts/PermanentMarker-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://MainMenu/Images/Angle.png" type="Texture" id=6]
+[ext_resource path="res://MainMenu/Customise.gd" type="Script" id=7]
+[ext_resource path="res://MainMenu/Images/chain_end.png" type="Texture" id=8]
+[ext_resource path="res://MainMenu/Images/chain_start.png" type="Texture" id=9]
+[ext_resource path="res://MainMenu/Images/chain.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=17]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.360784, 0.294118, 0.294118, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="Theme" id=18]
+default_font = SubResource( 17 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.705882 )
+Button/colors/font_color_focus = Color( 0.278431, 0.203922, 0.145098, 1 )
+Button/colors/font_color_hover = Color( 0.145098, 0.0823529, 0.207843, 1 )
+Button/colors/font_color_pressed = Color( 0.176471, 0.121569, 0.176471, 1 )
+Button/fonts/font = SubResource( 17 )
+Button/styles/disabled = SubResource( 26 )
+Button/styles/focus = SubResource( 27 )
+Button/styles/hover = SubResource( 28 )
+Button/styles/normal = SubResource( 31 )
+Button/styles/pressed = SubResource( 30 )
+Label/fonts/font = SubResource( 17 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 1, 0.87451, 0.490196, 1 )
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 616, 617 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 683, 837 )
+
+[sub_resource type="Theme" id=22]
+Panel/styles/panel = SubResource( 21 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 70, 56 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 70, 56 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 70, 70 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 120
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 80
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 120
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 70
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 150
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 49
+outline_size = 1
+font_data = ExtResource( 1 )
+
+[node name="interfeise" type="Control"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_pivot_offset = Vector2( 1271.09, 24.4565 )
+theme = SubResource( 18 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -174.289 ],
+"_edit_vertical_guides_": [ -350.813, -1145.0 ]
+}
+
+[node name="BG" type="Panel" parent="."]
+margin_left = -25.0
+margin_top = -15.0
+margin_right = 1927.0
+margin_bottom = 1105.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 19 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 376.0
+margin_bottom = 376.0
+custom_styles/panel = SubResource( 20 )
+
+[node name="Customise" type="Control" parent="."]
+script = ExtResource( 7 )
+
+[node name="Panel" type="Panel" parent="Customise"]
+margin_left = -0.777618
+margin_top = 459.5
+margin_right = 377.222
+margin_bottom = 960.5
+theme = SubResource( 22 )
+
+[node name="Left" type="Button" parent="Customise/Panel"]
+margin_left = 25.2224
+margin_top = 108.5
+margin_right = 82.2224
+margin_bottom = 159.5
+text = "<<-"
+
+[node name="Right" type="Button" parent="Customise/Panel"]
+margin_left = 270.222
+margin_top = 110.5
+margin_right = 346.222
+margin_bottom = 170.5
+text = "->>>"
+
+[node name="Left b" type="Button" parent="Customise/Panel"]
+margin_left = 22.2224
+margin_top = 324.5
+margin_right = 98.2224
+margin_bottom = 375.5
+text = "<<<-"
+
+[node name="Right b" type="Button" parent="Customise/Panel"]
+margin_left = 278.222
+margin_top = 328.5
+margin_right = 354.222
+margin_bottom = 388.5
+text = "->>>"
+
+[node name="Chain" type="VBoxContainer" parent="Customise"]
+margin_left = 151.0
+margin_top = 133.0
+margin_right = 201.0
+margin_bottom = 528.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="start" type="Panel" parent="Customise/Chain"]
+margin_right = 50.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_styles/panel = SubResource( 23 )
+
+[node name="chain" type="Panel" parent="Customise/Chain"]
+margin_top = 40.0
+margin_right = 50.0
+margin_bottom = 345.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 24 )
+
+[node name="end" type="Panel" parent="Customise/Chain"]
+margin_top = 345.0
+margin_right = 50.0
+margin_bottom = 395.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="castom" type="Node2D" parent="Customise"]
+position = Vector2( 176, 697 )
+
+[node name="Tank" type="Sprite" parent="Customise/castom"]
+scale = Vector2( 2, 2 )
+
+[node name="barrel" type="Sprite" parent="Customise/castom"]
+
+[node name="MainMenu" type="Panel" parent="."]
+margin_left = 656.0
+margin_top = 138.0
+margin_right = 1128.0
+margin_bottom = 755.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 22 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Layout" type="VBoxContainer" parent="MainMenu"]
+margin_left = 16.0
+margin_top = 83.0
+margin_right = 470.0
+margin_bottom = 592.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="start" type="Button" parent="MainMenu/Layout"]
+margin_top = 20.0
+margin_right = 454.0
+margin_bottom = 193.0
+rect_pivot_offset = Vector2( 238.658, 360.643 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 0.972549, 0.952941, 0.952941, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "play"
+flat = true
+clip_text = true
+
+[node name="options" type="Button" parent="MainMenu/Layout"]
+margin_top = 197.0
+margin_right = 454.0
+margin_bottom = 312.0
+custom_colors/font_color_disabled = Color( 1, 0.992157, 0.992157, 1 )
+custom_colors/font_color_focus = Color( 1, 0.996078, 0.996078, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Settings"
+flat = true
+__meta__ = {
+"_editor_description_": "start"
+}
+
+[node name="exet" type="Button" parent="MainMenu/Layout"]
+margin_top = 316.0
+margin_right = 454.0
+margin_bottom = 489.0
+rect_pivot_offset = Vector2( 264.438, -184.689 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "exit"
+flat = true
+
+[node name="ChainMenu" type="VBoxContainer" parent="."]
+margin_left = 869.0
+margin_top = -37.0
+margin_right = 919.0
+margin_bottom = 248.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="chain" type="Panel" parent="ChainMenu"]
+margin_right = 50.0
+margin_bottom = 235.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 24 )
+
+[node name="end" type="Panel" parent="ChainMenu"]
+margin_top = 235.0
+margin_right = 50.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="ExitWindow" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 1, 0.992157, 0.992157, 1 )
+position = Vector2( 1510.84, -163.689 )
+scale = Vector2( 1.10278, 1.10278 )
+texture = ExtResource( 3 )
+offset = Vector2( -872.698, 105.48 )
+
+[node name="no" type="Button" parent="ExitWindow"]
+margin_left = -783.47
+margin_top = 184.987
+margin_right = -561.47
+margin_bottom = 260.987
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "нет"
+flat = true
+
+[node name="yes" type="Button" parent="ExitWindow"]
+margin_left = -1356.57
+margin_top = 146.901
+margin_right = -944.567
+margin_bottom = 352.901
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 13 )
+shortcut_in_tooltip = false
+keep_pressed_outside = true
+text = "да"
+flat = true
+
+[node name="Label" type="Label" parent="ExitWindow"]
+margin_left = -1417.0
+margin_top = -161.0
+margin_right = 559.0
+margin_bottom = 190.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "Вы действительно хотити выйти из игры?"
+
+[connection signal="pressed" from="Customise/Panel/Left" to="Customise" method="_on_Left_pressed"]
+[connection signal="pressed" from="Customise/Panel/Right" to="Customise" method="_on_Right_pressed"]
+[connection signal="pressed" from="Customise/Panel/Left b" to="Customise" method="_on_Left_b_pressed"]
+[connection signal="pressed" from="Customise/Panel/Right b" to="Customise" method="_on_Right_b_pressed"]
+[connection signal="pressed" from="MainMenu/Layout/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainMenu/Layout/exet" to="." method="_on_exet_pressed"]
+[connection signal="pressed" from="ExitWindow/no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="ExitWindow/yes" to="." method="_on_yes_pressed"]
