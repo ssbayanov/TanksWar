@@ -6,19 +6,11 @@ func _ready():
 	rand_seed(map.map_seed)
 	get_data_for_player()
 	
-	var data = {
-		'body' : g.tanks['the_biggest_tank']
-	}
-	
-	$player.set_params(data)
 	$CanvasLayer/MiniMap.set_map($map)
 	$CanvasLayer/MiniMap.set_player($player)
 	
 func set_tank_params(params):
 	$player.set_params(params)
-	
-
-
 	generate_objects()
 	
 func get_data_for_player():
