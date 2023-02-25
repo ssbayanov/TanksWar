@@ -15,10 +15,11 @@ func set_params(params):
 		i.queue_free()
 		
 	var body = g.tanks[params['body']]
-	var barrel = g.barrels[params['barrel']]
 	var barrel_res = load("res://Scence/barrel.tscn")
 	
 	for i in range(body['barrel_count']):
 		var new_barrel = barrel_res.instance()
 		new_barrel.set_position(body['barrel_pos'][i])
+		new_barrel.set_type(params['barrel'])
 		add_child(new_barrel)
+		

@@ -37,7 +37,6 @@ func set_params(params: Dictionary):
 	"""
 	# get body params
 	var body = g.tanks[params['body']]
-	
 	# load texture
 	$icon.set_texture(load(body['sprite']))
 	
@@ -48,8 +47,10 @@ func set_params(params: Dictionary):
 	rot_speed = max_speed / 10
 	hp = body['hp']
 	
-	var barrel = g.barrels[params['sprite']]
+	var barrel = g.barrels[params['barrel']]
+	
 	barrels.set_params(params)
+#	$Barrels.set_texture(load(barrel['sprite']))
 	print(params)
 	
 	

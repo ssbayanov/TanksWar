@@ -40,7 +40,9 @@ func _process(delta):
 		var body = collision.collider 
 		if body.has_method("damage_hp"):
 			body.damage_hp(dammage)
-		get_parent().remove_child(self)
+			
+		if not body.has_method("_on_sens_body_entered"):
+			get_parent().remove_child(self)
 		
 		return
 
