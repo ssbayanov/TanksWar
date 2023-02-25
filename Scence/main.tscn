@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Saunds/Игра денди - Танчики (www.hotplayer.ru).mp3" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/main.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scence/tanknpc.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scence/Console.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scence/Mine.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scence/bullet1.tscn" type="PackedScene" id=13]
 
 [node name="main" type="Node2D"]
 position = Vector2( 0, -5.33936 )
@@ -44,6 +45,10 @@ position = Vector2( -252.519, -6.69852 )
 
 [node name="box" parent="." instance=ExtResource( 4 )]
 position = Vector2( 54.9719, -51.7803 )
+
+[node name="bullet" parent="." instance=ExtResource( 13)]
+position = Vector2( -216, -4.66064 )
+is_object = true
 
 [node name="bullet2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 93.6646, 12.8146 )

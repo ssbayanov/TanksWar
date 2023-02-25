@@ -66,6 +66,7 @@ func _ready():
 	tile_size = Map.cell_size
 	make_maze()
 	erase_walls()
+	generate_edge()
 	
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
@@ -259,7 +260,7 @@ func generate_ground():
 		for y in range(size.y):
 			if x % 4:
 				var noise = OpenSimplexNoise.new()
-				print(noise.get_image(size.x, size.y).get_pixel(x, y))
+				# print(noise.get_image(size.x, size.y).get_pixel(x, y))
 			if noise.get_noise_2d(x, y) > 0:
 				set_cell($Ground, Vector2(x, y), 0, Vector2(0, g.rand_rangei(0, 2)))
 			else:
@@ -310,3 +311,55 @@ func put_road(pos, tile = 10):
 
 	if tile_type:
 		set_cell($Roads, pos, tile_type, road_autotile.get(tile, Vector2(-1, 0)))
+
+func tile_is_sand(x, y) -> bool:
+	
+	var ground_autotile = $Ground.get_cell_autotile_coord(x, y)
+	return ground_autotile.y > 1
+
+enum EDGE {
+		LEFT_TOP,
+		RIGHT_TOP,
+		RIGHT_BOTTOM,
+		LEFT_BOTTOM,
+		TOP,
+		RIGHT,
+		BOTTOM,
+		LEFT,
+		CENTER
+	}
+	
+func put_edge(x, y, type):
+	var tiles = {
+		EDGE.LEFT_TOP: Vector2(0, 0),
+		EDGE.TOP: Vector2(1, 0),
+		EDGE.RIGHT_TOP: Vector2(2, 0),
+		EDGE.RIGHT: Vector2(2, 1),
+		EDGE.RIGHT_BOTTOM: Vector2(2, 2),
+		EDGE.BOTTOM: Vector2(1, 2),
+		EDGE.LEFT_BOTTOM: Vector2(0, 2),
+		EDGE.LEFT: Vector2(0, 1),
+		EDGE.CENTER: Vector2(1, 1),
+	}
+	
+	var is_sand = tile_is_sand(x, y)
+	
+	var tx = 1
+	var ty = 1
+	if x == 0:
+		tx = -1
+	if y == 0:
+		ty = -1
+		
+	set_cell($Ground, Vector2(tx, ty), 5 if is_sand else 4, tiles[type])
+	if type <= EDGE.LEFT_BOTTOM:
+		set_cell($Ground, Vector2(tx, ty), 5 if is_sand else 4, tiles[type])
+
+func generate_edge():
+	# set corner
+	
+
+	for x in range(size.x + 2):
+		pass
+	for y in range(size.y):
+		pass

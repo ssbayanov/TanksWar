@@ -11,11 +11,11 @@ var type = 1
 export var is_object = false
 
 
-
-
 func _ready():
 	if is_object:
-		$collider.disabled = false 
+		$collider.disabled = false
+	else:
+		$Vistrel.play()
 
 func _process(delta):
 	if is_object:
