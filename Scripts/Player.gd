@@ -21,11 +21,12 @@ var time_cold = 0
 
 # Console
 
-onready var trackRes = load("res://Scence/track.tscn")
+onready var trackRes = g.track
+onready var bullet_res = g.bullets[1]
 
 func _ready():
 	$icon.rotation_degrees = 0
-	add_bullet(load("res://Scence/bullet1.tscn").instance())
+	add_bullet(bullet_res.instance())
 	change_hp(0)
 	$icon.set_texture(load(texture_tank))
 	

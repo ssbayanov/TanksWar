@@ -39,15 +39,17 @@ func generate_objects():
 
 func generate_tree(cofficente_abaut:int = -1, cofficente_to:int = -0.58):
 	var noise = map.get_noise(map.size, 50)
+	var tree = load("res://Objects/Tree/treegreen.tscn")
 	for x in range(map.size.x):
 		for y in range(map.size.y):
 			var tile = noise.get_noise_2d(x, y)
 			if tile >= cofficente_abaut and tile <= cofficente_to: 
 				print(tile)
-				var object = load("res://Scence/treegreen.tscn").instance()
+				var object = tree.instance()
 				$objects/tree.add_child(object)
 				object.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
-	
+
+
 func generate_mines():
 	var caunt = rand_rangei(50, 100)
 	rand_seed(map.map_seed)
