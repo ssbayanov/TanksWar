@@ -8,15 +8,6 @@ var speed_coff:int = 1
 
 var game
 
-var bullets = [
-	load("res://Bullet/bullet1.tscn"),
-	load("res://Bullet/bullet2.tscn")
-]
-
-var stage = load("res://Stage/Stage.tscn")
-var barrel = load("res://MainMenu/barrel.tscn")
-var track = load("res://Objects/Track/track.tscn")
-
 var tanks = {
 	'standart':{
 		'sprite': "res://Images/tankBody_dark.png",
@@ -87,9 +78,6 @@ var barrels = {
 'cool_down': 0.2,
   }
  }
-
-
-
 var keys_tanks = tanks.keys()
 var time = OS.get_time()
 var time_return = String(time.hour) +":"+String(time.minute)+":"+String(time.second)

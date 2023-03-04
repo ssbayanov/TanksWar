@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/tanknpc.gd" type="Script" id=1]
+[ext_resource path="res://Images/explosion2.png" type="Texture" id=2]
+[ext_resource path="res://Images/explosion3.png" type="Texture" id=3]
+[ext_resource path="res://Images/explosion5.png" type="Texture" id=4]
+[ext_resource path="res://Images/explosion1.png" type="Texture" id=5]
+[ext_resource path="res://Images/explosion4.png" type="Texture" id=6]
+[ext_resource path="res://Images/specialBarrel1_outline.png" type="Texture" id=7]
+[ext_resource path="res://animations/shooot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Models/Tunk.gdshader" type="Shader" id=9]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 9 )
+shader_param/grayscale = false
+shader_param/coldscale = false
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 18.2555
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "boom",
+"speed": 12.0
+} ]
+
+[node name="tanknpc" type="KinematicBody2D" groups=["enemy", "minimap_objects"]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="tank_npc" type="Sprite" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 1.8, 1.2 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="shooot" parent="." instance=ExtResource( 8 )]
+position = Vector2( -7.27596e-12, -22 )
+rotation = 3.14159
+scale = Vector2( 1.9, 0.5 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, -26 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="hpbar" type="ProgressBar" parent="Node2D"]
+margin_left = -32.0
+margin_top = -60.0
+margin_right = 38.0
+margin_bottom = -45.0
+
+[node name="reloadprogress" type="ProgressBar" parent="Node2D"]
+margin_left = -32.0
+margin_top = -45.0
+margin_right = 38.0
+margin_bottom = -30.0
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = -1.5708
+scale = Vector2( -2526.55, 2123.38 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( -1.58103e-07, 13.2582 )
+rotation = 4.71239
+scale = Vector2( 1.04544, 1 )
+polygon = PoolVector2Array( -41.9045, 51.4581, 58.4821, 51.4581, 193.33, 394.57, -134.8, 391.574 )
+
+[node name="boom_player" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 4 )
+animation = "boom"
+
+[connection signal="animation_finished" from="shooot" to="." method="_on_shooot_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="animation_finished" from="boom_player" to="." method="_on_boom_player_animation_finished"]

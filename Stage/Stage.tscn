@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Stage/stage.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Turret/Turret.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Tree/treegreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Box/box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Map/map.tscn" type="PackedScene" id=6]
@@ -35,19 +36,26 @@ stream = ExtResource( 10 )
 [node name="map" parent="." instance=ExtResource( 6 )]
 
 [node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 510, 388.339 )
+position = Vector2( -252.519, -6.69852 )
 
 [node name="box" parent="." instance=ExtResource( 5 )]
-position = Vector2( 246, 345.339 )
+position = Vector2( 188, 94.3394 )
 
 [node name="bullet2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 93.6646, 12.8146 )
+is_object = true
+
+[node name="treegreen" parent="." instance=ExtResource( 3 )]
+position = Vector2( 192.055, -11.1167 )
+
+[node name="treegreen2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 226.882, -9.84024 )
 
 [node name="Turrel" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1025, 750.339 )
+position = Vector2( -269.823, 72.4726 )
 
 [node name="Turrel2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 570, 850.339 )
+position = Vector2( -121.132, 228.301 )
 
 [node name="tanknpc" parent="." instance=ExtResource( 8 )]
 position = Vector2( 661.756, 353.476 )
