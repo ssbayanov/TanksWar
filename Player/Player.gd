@@ -29,6 +29,10 @@ func _ready():
 	bullet.is_object = true
 	add_bullet(bullet)
 	change_hp(0)
+	$Camera2D.limit_left = -64
+	$Camera2D.limit_top = -64
+	$Camera2D.limit_bottom = (g.map_size.y + 1) * 64
+	$Camera2D.limit_right = (g.map_size.x + 1) * 64
 
 
 func set_params(params: Dictionary):
