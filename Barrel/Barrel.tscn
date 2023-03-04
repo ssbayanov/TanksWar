@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Barrel/Barrel.gd" type="Script" id=1]
+[ext_resource path="res://Bullet/shooot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/shotOrange.png" type="Texture" id=3]
+[ext_resource path="res://Images/shotLarge.png" type="Texture" id=4]
+[ext_resource path="res://Images/shotThin.png" type="Texture" id=5]
+[ext_resource path="res://Images/shotRed.png" type="Texture" id=6]
+[ext_resource path="res://Images/tankBlue_barrel2_outline.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "default",
+"speed": 60.0
+} ]
+
+[node name="Barrel" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="shooot" parent="." instance=ExtResource( 2 )]
+position = Vector2( -35, -1.19209e-07 )
+rotation = 1.5708
+z_index = 2
+frames = SubResource( 1 )
+
+[node name="BulletPosition2D" type="Position2D" parent="."]
+position = Vector2( -63, 0 )
+rotation = 1.5708
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+z_index = 2
+texture = ExtResource( 7 )
+offset = Vector2( 0, 10 )
+
+[connection signal="animation_finished" from="shooot" to="." method="_on_shooot_animation_finished"]
