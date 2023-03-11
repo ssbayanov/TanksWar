@@ -8,74 +8,29 @@
 [ext_resource path="res://Images/explosion5.png" type="Texture" id=6]
 [ext_resource path="res://Sounds/Vistrel.wav" type="AudioStream" id=8]
 
-[sub_resource type="GDScript" id=4]
-script/source = "extends KinematicBody2D
+[sub_resource type="Animation" id=4]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.5, 0.6, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 1 ) ]
+}
 
-export var shoot_delay = 3#через какой промежуток времени можно стрелять сново
-var speed =  1200#скорость пули
-var c_speed = Vector2()
-var dammage = 50 # урон пули
-var startpos = 0
-var fly_time = 2
-var type = 2
-export var is_object = true
-
-
-func _ready():
-	if is_object:
-		$collider.disabled = false
-	else:
-		$Vistrel.play()
-		
-func _process(delta):
-	if is_object:
-		return
-		
-		
-		
-		
-		
-		
-		
-	else:
-		$collider.disabled = false
-	var collision = move_and_collide(Vector2(0,-speed).rotated(rotation)*delta, false)
-	
-	fly_time -= delta
-	
-	if fly_time <= 0:
-		get_parent().remove_child(self)
-		return
-		
-	if collision:
-		var body = collision.collider 
-		if body.has_method(\"damage_hp\"):
-			body.damage_hp(dammage)
-			
-		if not body.has_method(\"_on_sens_body_entered\"):
-			get_parent().remove_child(self)
-		
-		return
-
-
-
-
-func _on_sens_body_entered(body):
-	if is_object:
-		if body.has_method(\"add_bullet\"):
-			body.add_bullet(self)
-			get_parent().remove_child(self)
-			
-"
-
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 5.07105
 height = 0.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=6]
 radius = 15.432
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=7]
 resource_name = "BIGBOOM"
 length = 2.0
 tracks/0/type = "value"
@@ -102,7 +57,7 @@ texture = ExtResource( 5 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0.163055, 0.241273 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 disabled = true
 one_way_collision = true
 
@@ -110,11 +65,11 @@ one_way_collision = true
 
 [node name="collider" type="CollisionShape2D" parent="sens"]
 position = Vector2( 0.0802956, -0.142298 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/BIGBOOM = SubResource( 3 )
+anims/BIGBOOM = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="AnimationPlayer"]
 visible = false
