@@ -8,6 +8,7 @@ var speed_coff:int = 1
 
 var game
 
+
 var bullets = load("res://Bullet/bullet2.tscn")
 
 var stage = load("res://Stage/Stage.tscn")
