@@ -110,8 +110,8 @@ __meta__ = {
 [node name="BG" type="Panel" parent="."]
 margin_left = -25.0
 margin_top = -15.0
-margin_right = 2224.0
-margin_bottom = 1374.0
+margin_right = 1927.0
+margin_bottom = 1105.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 19 )
