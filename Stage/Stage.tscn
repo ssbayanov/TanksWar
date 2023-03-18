@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Stage/stage.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Turret/Turret.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Box/box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Map/map.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Canister/Сanister.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/NPC/tanknpc.tscn" type="PackedScene" id=8]
 [ext_resource path="res://MiniMap/MiniMap.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sounds/Игра денди - Танчики (www.hotplayer.ru).mp3" type="AudioStream" id=10]
@@ -44,7 +45,8 @@ position = Vector2( 246, 345.339 )
 position = Vector2( 296, 50.3394 )
 
 [node name="bullet2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 184, 67.3394 )
+position = Vector2( 176.567, 63.1772 )
+type_bullet = 1
 
 [node name="Turrel" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1025, 750.339 )
@@ -60,3 +62,6 @@ position = Vector2( 661.756, 353.476 )
 [node name="tree" type="Node2D" parent="objects"]
 
 [node name="Mines" type="Node2D" parent="objects"]
+
+[node name="Сanister" parent="." instance=ExtResource( 7 )]
+position = Vector2( 109.303, 269.245 )

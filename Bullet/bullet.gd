@@ -59,7 +59,7 @@ func _process(delta):
 		$collider.disabled = false
 	
 	$bulletBlue2_outline.set_texture(load(sprite))
-	print("set_textured")
+#	print("set_textured")
 
 		
 	var collision = move_and_collide(c_speed * delta + (Vector2(0,-speed)).rotated(rotation)*delta, false)

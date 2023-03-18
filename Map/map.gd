@@ -13,8 +13,6 @@ var cell_walls = {Vector2(0, -step): N, Vector2(step, 0): E,
 
 var tile_size = 64  # tile size (in pixels)
 
-signal test_signal
-
 const min_width = 50
 const min_height = 50
 const max_width = 100
@@ -177,7 +175,6 @@ enum TILE {
 func set_zoom(zoom, pos):
 	var transform = get_viewport().get_canvas_transform()
 
-	var old_scale = transform.get_scale()
 	transform = transform.scaled((Vector2.ONE * zoom))
 	var new_scale = transform.get_scale()
 
