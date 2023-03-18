@@ -6,14 +6,19 @@ var object = []
 var time = 0
 var what
 export var detonation_distance = 200
+
+
 func _ready():
 	$Mina.modulate.a = 0
-	
+
+
 func _process(delta):
 	if object == []:
 		return
+ 
 	for obj in object:
-		if obj != null: break
+		if not is_instance_valid(obj):
+			break
 		var leng = abs((global_position - obj.global_position).length())
 		if leng != 0:
 			$Mina.modulate.a = 15 / leng
@@ -40,10 +45,13 @@ func _process(delta):
 				if "c_speed" in obj:
 					var dist = (obj.global_position - global_position)
 					obj.global_position -= dist * (detonation_distance - dist.length()) / 100 * delta
-								
+
+
 func _on_Area2D_body_entered(body):
 	if  body.has_method("damage_hp"):
 		object.append(body)
+		
+		
 func _on_Area2D_body_exited(body):
 	for i in range(len(object) - 1):
 		if object[i] == body:

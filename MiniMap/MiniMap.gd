@@ -26,7 +26,7 @@ func set_player(p): player = p;
 
 
 func add_marker(obj): # добовляем новый маркер
-	var new_marker = load("res://Scence/marker.tscn").instance()
+	var new_marker = load("res://MiniMap/marker.tscn").instance()
 	new_marker.obj = obj
 	viewport.add_child(new_marker)
 	
