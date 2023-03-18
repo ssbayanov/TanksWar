@@ -26,7 +26,7 @@ z_index = 2
 frames = SubResource( 1 )
 
 [node name="BulletPosition2D" type="Position2D" parent="."]
-position = Vector2( -38, 0 )
+position = Vector2( -63, 0 )
 rotation = 1.5708
 scale = Vector2( 1.5, 1.5 )
 

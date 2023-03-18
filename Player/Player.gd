@@ -21,7 +21,7 @@ var time_cold = 0
 # Console
 
 onready var trackRes = g.track
-onready var bullet_res = g.bullets[0]
+onready var bullet_res = g.bullets
 
 func _ready():
 	$icon.rotation_degrees = 0

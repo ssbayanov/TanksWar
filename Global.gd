@@ -8,10 +8,7 @@ var speed_coff:int = 1
 
 var game
 
-var bullets = [
-	load("res://Bullet/bullet1.tscn"),
-	load("res://Bullet/bullet2.tscn")
-]
+var bullets = load("res://Bullet/Bullet.gd")
 
 var stage = load("res://Stage/Stage.tscn")
 var barrel = load("res://MainMenu/barrel.tscn")
