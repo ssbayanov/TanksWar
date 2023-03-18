@@ -6,10 +6,17 @@
 [ext_resource path="res://Images/explosionSmoke4.png" type="Texture" id=4]
 [ext_resource path="res://Bullet/Images/bulletBlue2_outline.png" type="Texture" id=5]
 [ext_resource path="res://Images/explosion5.png" type="Texture" id=6]
+<<<<<<< Updated upstream
 [ext_resource path="res://Bullet/bullet2.gd" type="Script" id=7]
 [ext_resource path="res://Sounds/Vistrel.wav" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
+=======
+[ext_resource path="res://Bullet/bullet.gd" type="Script" id=7]
+[ext_resource path="res://Sounds/Vistrel.wav" type="AudioStream" id=8]
+
+[sub_resource type="CapsuleShape2D" id=5]
+>>>>>>> Stashed changes
 radius = 5.07105
 height = 0.0
 

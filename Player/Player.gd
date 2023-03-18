@@ -142,8 +142,9 @@ func damage_hp(amount):
 	# if god mode is enabled - no damage
 	if g.god_mode: 
 		return
-	
+	$roregg228.play()
 	change_hp(-amount)
+#	$228w.play():
 
 
 func change_hp(amount):
@@ -156,11 +157,13 @@ func change_hp(amount):
 		hp = 100
 		
 	$hpbar/hpbar.set_value(hp)
+	if hp <= 0:
+		$AudioStreamPlayer2D.play()
 	 
 	
 func add_bullet(new_bullet):
 	barrels.add_bullet(new_bullet)
-	
+	$AudioStreamPlayer2D2.play()
 	
 func colding(long):
 #	print(long / 10)

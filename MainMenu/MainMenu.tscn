@@ -238,7 +238,11 @@ custom_colors/font_color_focus = Color( 0.972549, 0.952941, 0.952941, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 7 )
+=======
+custom_fonts/font = SubResource( 15 )
+>>>>>>> Stashed changes
 text = "play"
 flat = true
 clip_text = true
@@ -252,7 +256,11 @@ custom_colors/font_color_focus = Color( 1, 0.996078, 0.996078, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 9 )
+=======
+custom_fonts/font = SubResource( 16 )
+>>>>>>> Stashed changes
 text = "Settings"
 flat = true
 __meta__ = {
@@ -269,7 +277,11 @@ custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 8 )
+=======
+custom_fonts/font = SubResource( 17 )
+>>>>>>> Stashed changes
 text = "exit"
 flat = true
 
@@ -324,7 +336,11 @@ custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 12 )
+=======
+custom_fonts/font = SubResource( 18 )
+>>>>>>> Stashed changes
 text = "нет"
 flat = true
 
@@ -338,7 +354,11 @@ custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.309804, 0.298039, 0.298039, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 13 )
+=======
+custom_fonts/font = SubResource( 19 )
+>>>>>>> Stashed changes
 shortcut_in_tooltip = false
 keep_pressed_outside = true
 text = "да"
@@ -352,7 +372,11 @@ margin_bottom = 326.0
 rect_scale = Vector2( 0.6, 0.6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 14 )
+=======
+custom_fonts/font = SubResource( 20 )
+>>>>>>> Stashed changes
 text = "Вы действительно хотити 
 выйти из игры?"
 align = 1
