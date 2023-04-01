@@ -62,7 +62,10 @@ func _physics_process(delta):
 	
 	
 func damage_hp(amount):
+#	var damage = amount + g.barrels[g.tank_parametrs['barrel']]['dmg_hp']
+	g.money += 50
 	change_hp(-amount)
+	
 	
 func boom():
 	hp = 0

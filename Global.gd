@@ -1,11 +1,12 @@
 extends Node
 var console = null
 var Tilemap = null
-
+var cost_tank = 0
+var money = 0
 # Console
 var god_mode:bool = false
 var speed_coff:int = 1
-
+var tank_parametrs
 var game
 
 var map_size = Vector2()
@@ -17,8 +18,10 @@ var barrel = load("res://MainMenu/barrel.tscn")
 var track = load("res://Objects/Track/track.tscn")
 
 
+
 var tanks = {
 	'standart':{
+		'cost': 0,
 		'sprite': "res://Images/tankBody_dark_outline.png",
 		'barrel_count': 1,
 		'hp': 100,
@@ -29,9 +32,11 @@ var tanks = {
 		'barrel_pos': [
 			Vector2(0, 0),
 		]
+		
 	},
  
 	'big_tank': {
+		'cost': 500,
 		'sprite': "res://Images/tankBody_darkLarge_outline.png",
 		'barrel_count': 2,
 		'hp': 150,
@@ -45,6 +50,7 @@ var tanks = {
 			]
 		},
 	'the_biggest_tank': {
+		'cost': 1000,
 		'sprite': "res://Images/tankBody_huge_outline.png",
 		'barrel_count': 4,
 		'hp': 250,
@@ -63,10 +69,10 @@ var tanks = {
 
 var barrels = {
 	'barrel_low':{
-		'cost': 500,
+		'cost': 0,
 		'sprite': "res://Images/tankDark_barrel2_outline.png",
 		'barrel_type': 1,
-		'damage': 50,
+		'dmg_hp': 0,
 		'speed': 50,
 		'cool_down': 1,
 	},
@@ -74,15 +80,15 @@ var barrels = {
 		'cost': 1000,
 		'sprite': "res://Images/tankDark_barrel3_outline.png",
 		'barrel_type': 2,
-		'damage': 20,
+		'dmg_hp': 10,
 		'speed': 40,
 		'cool_down': 0.5,
 	},
 	'barrel_high': {
-		'cost': 1500,
+		'cost': 3000,
 		'sprite': "res://Images/tankDark_barrel1_outline.png",
 		'barrel_type': 3,
-		'damage': 15,
+		'dmg_hp': 25,
 		'speed': 25,
 		'cool_down': 0.2,
 	}

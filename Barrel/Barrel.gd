@@ -50,7 +50,7 @@ func add_bullet(new_bullet):
 		bullet = new_bullet
 		return
 		
-	if new_bullet.type > bullet.type:
+	if new_bullet.type_bullet > bullet.type_bullet:
 		bullet = new_bullet
 	
 	

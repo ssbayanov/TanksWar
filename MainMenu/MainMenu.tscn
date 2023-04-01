@@ -349,6 +349,23 @@ text = "Вы действительно хотити
 выйти из игры?"
 align = 1
 
+[node name="your_money" type="Label" parent="."]
+margin_left = 15.7844
+margin_top = 915.707
+margin_right = 237.784
+margin_bottom = 967.708
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "your money:"
+
+[node name="cost_tank" type="Label" parent="."]
+margin_left = 15.2546
+margin_top = 881.994
+margin_right = 237.255
+margin_bottom = 933.994
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "cost:"
+
 [connection signal="pressed" from="Customise/Panel/Left" to="Customise" method="_on_Left_pressed"]
 [connection signal="pressed" from="Customise/Panel/Right" to="Customise" method="_on_Right_pressed"]
 [connection signal="pressed" from="Customise/Panel/Left b" to="Customise" method="_on_Left_b_pressed"]
