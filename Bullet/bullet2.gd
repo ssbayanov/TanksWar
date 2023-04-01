@@ -16,16 +16,10 @@ func _ready():
 	else:
 		$Vistrel.play()
 		
-func _process(delta):
+func _physics_process(delta):
 	if is_object:
 		return
-		
-		
-		
-		
-		
-		
-		
+
 	else:
 		$collider.disabled = false
 	var collision = move_and_collide(Vector2(0,-speed).rotated(rotation)*delta, false)

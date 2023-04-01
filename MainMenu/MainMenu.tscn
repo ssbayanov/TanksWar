@@ -310,9 +310,6 @@ texture = ExtResource( 3 )
 offset = Vector2( -872.698, 105.48 )
 region_enabled = true
 region_rect = Rect2( -98.8039, -46.4874, 1283.4, 516.878 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="no" type="Button" parent="ExitWindow"]
 margin_left = -783.47
