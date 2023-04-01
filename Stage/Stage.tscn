@@ -41,10 +41,10 @@ position = Vector2( 510, 388.339 )
 [node name="box" parent="." instance=ExtResource( 5 )]
 position = Vector2( 246, 345.339 )
 
-[node name="bullet" parent="." instance=ExtResource( 3 )]
+[node name="bullet" parent="." instance=ExtResource( 7 )]
 position = Vector2( 296, 50.3394 )
 
-[node name="bullet2" parent="." instance=ExtResource( 3 )]
+[node name="bullet2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 176.567, 63.1772 )
 type_bullet = 1
 
