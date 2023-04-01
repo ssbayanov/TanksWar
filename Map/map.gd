@@ -48,6 +48,7 @@ func _ready():
 
 	size.x = g.rand_rangei(min_width, max_width)
 	size.y = g.rand_rangei(min_height, max_height)
+	g.map_size = size
 
 	is_horisontal = bool(g.rand_rangei(0,2))
 	is_sand_on_top_or_left = bool(g.rand_rangei(0,2))
@@ -64,6 +65,7 @@ func _ready():
 	seed(map_seed)
 	print("Seed: ", map_seed)
 	tile_size = Map.cell_size
+	
 	make_maze()
 	erase_walls()
 	generate_edge()
@@ -351,11 +353,28 @@ func put_edge(x, y, type):
 		var ty = y
 		if x == 0:
 			tx -= 1
+		else:
+			tx += 1
 		if y == 0:
 			ty -= 1
-		set_cell($Ground, Vector2(tx, ty), 5 if is_sand else 4, tiles[type])
-		set_cell($Ground, Vector2(tx, ty), 5 if is_sand else 4, tiles[type])
-		set_cell($Ground, Vector2(tx, ty), 5 if is_sand else 4, tiles[type])
+		else:
+			ty += 1
+		
+		var tt
+		if x == 0 and y == 0: 
+			tt = EDGE.LEFT_TOP
+		elif x == 0 and y != 0: 
+			tt = EDGE.LEFT_BOTTOM
+		elif x != 0 and y == 0: 
+			tt = EDGE.RIGHT_TOP
+		else: 
+			tt = EDGE.RIGHT_BOTTOM
+		
+		set_cell($Ground, Vector2(tx, ty), 5 if is_sand else 4, tiles[tt])
+		if type == EDGE.TOP or type == EDGE.BOTTOM:
+			set_cell($Ground, Vector2(x, ty), 5 if is_sand else 4, tiles[type])
+		else:
+			set_cell($Ground, Vector2(tx, y), 5 if is_sand else 4, tiles[type])
 		
 	else:
 		var tx = x

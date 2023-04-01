@@ -16,7 +16,7 @@ var can_shoot = 0
 var barrel = true
 
 func _ready():
-	bullet = g.bullets.instance()
+	bullet = g.bullets[1].instance()
 	change_hp(0)
 	
 	

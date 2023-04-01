@@ -7,13 +7,26 @@ var marker_list = []
 onready var enemy_list = get_tree().get_nodes_in_group("enemy")
 onready var viewport = $Control/ViewportContainer/Viewport
 onready var camera = $Control/ViewportContainer/Viewport/Camera2D
-func _ready(): for e in enemy_list: add_marker(e)
+func _ready(): 
+	for e in enemy_list: 
+		add_marker(e)
+	var cam = $Control/ViewportContainer/Viewport/Camera2D
+	
+	#wait for create map
+	yield(get_tree().create_timer(0.5), "timeout")
+	cam.limit_left = -64
+	cam.limit_top = -64
+	cam.limit_bottom = (g.map_size.y + 1) * 64
+	cam.limit_right = (g.map_size.x + 1) * 64
+	
+	print("Minimap camera limit: ", g.map_size)
 
 # функции подгрусски данных
 func set_map(m):
-	viewport.add_child(m.get_node("Ground").duplicate());
-	viewport.add_child(m.get_node("Roads").duplicate());
-func set_player(p): player = p;
+	viewport.add_child(m.get_node("Ground").duplicate())
+	viewport.add_child(m.get_node("Roads").duplicate())
+func set_player(p): 
+	player = p
 
 
 func add_marker(obj): # добовляем новый маркер

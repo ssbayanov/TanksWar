@@ -47,7 +47,7 @@ func generate_tree(cofficente_abaut:int = -1, cofficente_to:int = -0.58):
 
 
 func generate_mines():
-	var caunt = rand_rangei(5, 10)
+	var caunt = rand_rangei(50, 200)
 	rand_seed(map.map_seed)
 	var object = load("res://Objects/Mine/Mine.tscn")
 	g.print(caunt)

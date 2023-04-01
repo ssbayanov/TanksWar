@@ -8,8 +8,12 @@ var speed_coff:int = 1
 
 var game
 
+var map_size = Vector2()
 
-var bullets = load("res://Bullet/bullet2.tscn")
+var bullets = [
+	load("res://Bullet/bullet1.tscn"),
+	load("res://Bullet/bullet2.tscn")
+]
 
 var stage = load("res://Stage/Stage.tscn")
 var barrel = load("res://MainMenu/barrel.tscn")
