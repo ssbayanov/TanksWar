@@ -28,6 +28,7 @@ func rand_rangei(start, stop):
 func generate_objects():
 	generate_tree()
 	generate_mines()
+	generate_boxes()
 
 func generate_tree(cofficente_abaut:int = -1, cofficente_to:int = -0.58):
 	var noise = map.get_noise(map.size, 50)
@@ -58,3 +59,22 @@ func generate_mines():
 		new_mine.type_of_explosion = rand_rangei(0, 3)
 		$objects/Mines.add_child(new_mine)
 		new_mine.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
+
+
+
+func generate_boxes():
+	var objects = [load("res://Barrel/Barel.tscn"), load("res://Objects/Box/box.tscn"), 
+	load("res://Objects/Hedhehog/barecata.tscn"), load("res://Objects/Hedhehog/Hedgehog.tscn")]
+	
+	
+	for object in objects:
+		var caunt = rand_rangei(5, 10)
+		rand_seed(map.map_seed)
+		
+		g.print(caunt)
+		for i in range(caunt):
+			var new_mine = object.instance()
+			var x = rand_rangei(0, map.size.x)
+			var y = rand_rangei(0, map.size.y)
+			$objects/Mines.add_child(new_mine)
+			new_mine.global_position = Vector2((x * 64) + 32, (y * 64) + 32)

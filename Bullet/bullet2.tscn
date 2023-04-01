@@ -9,14 +9,29 @@
 [ext_resource path="res://Bullet/bullet2.gd" type="Script" id=7]
 [ext_resource path="res://Sounds/Vistrel.wav" type="AudioStream" id=8]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="Animation" id=4]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.5, 0.6, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 5.07105
 height = 0.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=6]
 radius = 15.432
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=7]
 resource_name = "BIGBOOM"
 length = 2.0
 tracks/0/type = "value"
@@ -43,7 +58,7 @@ texture = ExtResource( 5 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0.163055, 0.241273 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 disabled = true
 one_way_collision = true
 
@@ -51,11 +66,11 @@ one_way_collision = true
 
 [node name="collider" type="CollisionShape2D" parent="sens"]
 position = Vector2( 0.0802956, -0.142298 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/BIGBOOM = SubResource( 3 )
+anims/BIGBOOM = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="AnimationPlayer"]
 visible = false
