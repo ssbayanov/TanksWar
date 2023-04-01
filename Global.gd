@@ -10,7 +10,7 @@ var game
 
 var map_size = Vector2()
 
-var bullets = load("res://Bullet/Bullet.gd")
+var bullets = load("res://Bullet/Bullet2.tscn")
 
 var stage = load("res://Stage/Stage.tscn")
 var barrel = load("res://MainMenu/barrel.tscn")

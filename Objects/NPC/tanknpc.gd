@@ -26,7 +26,7 @@ var timer = 0
 onready var trackRes = g.track# нужно
 
 func _ready():
-	bullet = g.bullets[1].instance()
+	bullet = g.bullets.instance()
 	change_hp(0)
 
 
