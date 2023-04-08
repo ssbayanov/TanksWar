@@ -63,6 +63,7 @@ func _physics_process(delta):
 	
 func damage_hp(amount):
 	change_hp(-amount)
+	$AudioStreamPlayer2D2.play()
 	
 func boom():
 	hp = 0
@@ -84,6 +85,7 @@ func change_hp(amount):
 	if hp > 100:
 		hp = 100
 	$Node2D/hpbar.set_value(hp)
+	$AudioStreamPlayer2D.play()
 	
 	
 

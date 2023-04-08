@@ -58,3 +58,4 @@ func generate_mines():
 		new_mine.type_of_explosion = rand_rangei(0, 3)
 		$objects/Mines.add_child(new_mine)
 		new_mine.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
+	$AudioStreamPlayer2D.play()

@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 var mindistance = 100
 var maxdistance = 500
 var player_tank 
@@ -15,14 +16,7 @@ var can_shoot = 0
 var barrel = true
 
 func _ready():
-<<<<<<< Updated upstream
 	bullet = g.bullets[1].instance()
-=======
-	bullet = g.bullets.instance()
-	bullet.is_object = true
-	add_child(bullet)
-	bullet.hide()
->>>>>>> Stashed changes
 	change_hp(0)
 	
 	
@@ -37,7 +31,8 @@ func _physics_process(delta):
 	
 func damage_hp(amount):
 	change_hp(-amount)
-	$enj.play()
+	$AudioStreamPlayer2D2.play()
+	
 	
 func boom():
 	hp = 0
@@ -53,18 +48,16 @@ func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
+	
 #		emit_signal("removed", self)
 		remove_from_group("minimap_objects")
 		boom()
 	if hp > 100:
 		hp = 100
 	$Node2D/hpbar.set_value(hp)
+	
 	if hp <= 0:
 		$AudioStreamPlayer2D.play()
-		
-
-	
-
 
 	
 	
@@ -103,6 +96,9 @@ func _shoot():
 		newbullet.global_rotation = global_rotation
 		newbullet.is_object=false
 		shoot_delayer = 0
+	
+
+	
 
 
 
@@ -126,4 +122,3 @@ func _on_shooot_animation_finished():
 func _on_shooot2_animation_finished():
 	$shooot2.set_frame(0)
 	$shooot2.hide()
-
