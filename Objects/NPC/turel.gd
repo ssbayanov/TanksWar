@@ -1,10 +1,9 @@
 extends KinematicBody2D
 
-
+var minimap_icon = "Mob"
 var mindistance = 100
 var maxdistance = 500
 var player_tank 
-
 var max_speed = 500 #максимальная скорость танка
 var acc = 100 #замедление танка (accsiliration)
 var dec = 300 #ускорение танка
@@ -19,45 +18,40 @@ var track_step = 10
 
 var barrel = true
 
+var time_in_map = 0 # нужно
+var ride_accuracy = 100 # нужно
+var max_destance_error = 1000
 
-onready var trackRes = load("res://Objects/Track/track.tscn")
+var timer = 0
+onready var trackRes = g.track# нужно
 
 func _ready():
-	bullet = load("res://Bullet/bullet1.tscn").instance()
+	bullet = g.bullets[1].instance()
 	change_hp(0)
-	
-	
-	
-	
-	
-	
+
+
 func _process(delta):
 	if not player_tank:
 		return
-	_shoot_delayer_process(delta)
+	time_in_map += delta
+	#_shoot_delayer_process(delta)
 
 
-
-
+var data_for_forward = [0, 0]
 
 func _physics_process(delta):
 	if not player_tank:
 		return
-	var distance = (player_tank.position - position).rotated(PI/2)
-	
-	if distance.length() < maxdistance and distance.length() > mindistance: 
-		if abs(c_speed.y) < max_speed: #меняем скорость на ускорение * время смены кадров
-			c_speed.y -= acc * delta 
-	else:
-		if abs(c_speed.y) >= 0:
-			if abs(c_speed.y) < 10:
-				c_speed.y = 0
-		else:
-			c_speed.y -= (dec*delta) * c_speed.y / abs(c_speed.y)
-	global_rotation = lerp_angle(global_rotation,distance.angle(),delta)
-	c_speed = move_and_slide(c_speed.rotated(rotation)).rotated(-rotation)
-	c_speed.x = 0
+	if timer >= 5:
+		data_for_forward = inaction()
+#		print(data_for_forward)
+		timer = 0
+		
+	global_rotation = lerp_angle(global_rotation,data_for_forward[0],delta * 5)
+	#c_speed = move_and_slide(c_speed.rotated(rotation)).rotated(-rotation)
+	#c_speed.x = 0
 
+	timer += delta
 	len_track += c_speed.length() * delta
 	if len_track >= track_step:
 		len_track = 0
@@ -84,10 +78,13 @@ func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
+		#signal("remove_turrel")
+		remove_from_group("minimap_objects")
 		boom()
 	if hp > 100:
 		hp = 100
 	$Node2D/hpbar.set_value(hp)
+	
 	
 
 
@@ -112,7 +109,7 @@ func _shoot_delayer_process(delta):
 	
 	
 func _shoot():
-	if shoot_delayer >= bullet.shoot_delay and player_tank.global_position.length() < 200:
+	if shoot_delayer >= bullet.shoot_delay:
 		var newbullet = bullet.duplicate()
 		get_parent().add_child(newbullet)
 		newbullet.shoot_delay = 0.2
@@ -154,3 +151,22 @@ func _on_shooot_animation_finished():
 func _on_shooot2_animation_finished():
 	$shooot2.set_frame(0)
 	$shooot2.hide()
+
+
+
+func inaction():
+	var pos = global_position
+	var where_pos = player_tank.position
+	var distance = where_pos - pos
+	var evclidion_distance = pow(pow(distance.x, 2) + pow(distance.y ,2), 0.5)
+	var angel = pos.angle_to(where_pos)
+	
+	var rot_error = g.rand_rangei((ride_accuracy - 100), (100 - ride_accuracy)) / 100.0 * PI 
+	var distance_error = g.rand_rangei((ride_accuracy - 100), (100 - ride_accuracy)) / 100.0 * max_destance_error# / 100 
+
+#	print("Угол -", rad2deg(angel))
+#	print(rad2deg(rot_error))
+#	print(distance_error)
+
+	return [(rot_error + angel), distance_error]
+	
