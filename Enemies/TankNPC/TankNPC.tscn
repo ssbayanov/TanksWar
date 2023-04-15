@@ -4,27 +4,48 @@
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends KinematicBody2D
-var player_tank
+const agrisive_distanse = 1000
+const max_speed = 1000
+
+var player_tank # тут хранитяс сылка на игрока
+var path = [] # тут хранятся путь к конечной точки
+var mode = \"passive\" # состояние танка
+var c_speed = Vector2()
 
 func _ready():
 	set_color()
 
-func set_color(color = null):
+func set_color(color = null): # Задаём цвет танка.
 #	\"blue\", \"dark\", \"green\",\"red\",\"sand\" - все цвета танков
-	if color == null:
+	if color == null: # Если мы не указали цвет танка, то выыбераем рамномно.
 		color = g.rand_rangei(0, 5)
 		if color == 0: color = \"blue\"
 		if color == 1: color = \"dark\"
 		if color == 2: color = \"green\"
 		if color == 3: color = \"red\"
 		if color == 4: color = \"sand\"
-	var Path2Tank = \"res://Images/tankBody_\" + color+ \".png\";
+	var Path2Tank = \"res://Images/tankBody_\" + color+ \".png\"; # Строим путь к текстуре танка и применяем эту тикстуру.
 	$tank_npc.texture = load(Path2Tank)
 
 
 func _physics_process(delta):
+	var end_position = path.back() # конечная позиция
 	if player_tank == null: return; # если у танка нету цели нападения, то мы ничего не делаем.
+	if global_position - player_tank.global_position <= agrisive_distanse: # Если наш танк в поле зрения танка противника, то переходим в агрисивный режим.
+		mode = \"agrisive\"
+	else: # иначе в пасивный.
+		mode = \"passive\"
 	
+	
+	if mode == \"passive\": # если танк не видит противника, то ходит по всей карте.
+		if end_position == global_position or end_position == null: # если мы дошли до нужной точки то мы её меняем.
+			var new_position = Vector2( g.rand_rangei(0, g.map_size.x), g.rand_rangei(0, g.map_size.x) )
+			path = g.generate_path(global_position, new_position)
+		else: # иначе движимся к ней.
+			c_speed = move_and_slide(Vector2(path.pop_front()))
+	elif mode == \"agrisive\": # если танк нашёл цель.
+		pass
+			
 	
 	
 	
