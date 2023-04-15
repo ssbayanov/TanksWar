@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Images/treeGreen_leaf.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Tree/treegreen.gd" type="Script" id=2]
 [ext_resource path="res://Objects/Tree/TreeGreenLeaf.gd" type="Script" id=3]
-[ext_resource path="res://Images/treeGreen_small.png" type="Texture" id=4]
 [ext_resource path="res://Images/treeGreen_twigs.png" type="Texture" id=5]
 [ext_resource path="res://Images/treeGreen_large.png" type="Texture" id=6]
 
@@ -33,7 +32,7 @@ shape = SubResource( 2 )
 visible = false
 
 [node name="twigs" type="Sprite" parent="twings"]
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="twigs2" type="Sprite" parent="twings"]
 position = Vector2( 1.74999, 0.500001 )

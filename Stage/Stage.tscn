@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Stage/stage.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Turret/Turret.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Hedhehog/Hedgehog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Box/box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Map/map.tscn" type="PackedScene" id=6]
@@ -9,9 +10,11 @@
 [ext_resource path="res://Objects/NPC/tanknpc.tscn" type="PackedScene" id=8]
 [ext_resource path="res://MiniMap/MiniMap.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sounds/Игра денди - Танчики (www.hotplayer.ru).mp3" type="AudioStream" id=10]
+[ext_resource path="res://Objects/Hedhehog/wfegr44huah.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Objects/Hedhehog/barecata.tscn" type="PackedScene" id=12]
 
 [node name="stage" type="Node2D"]
-position = Vector2( 0, -5.33936 )
+position = Vector2( -425, -197 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -718.904 ]
@@ -35,25 +38,59 @@ stream = ExtResource( 10 )
 [node name="map" parent="." instance=ExtResource( 6 )]
 
 [node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 510, 388.339 )
-
-[node name="box" parent="." instance=ExtResource( 5 )]
-position = Vector2( 246, 345.339 )
+position = Vector2( 691, 619 )
 
 [node name="bullet2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 93.6646, 12.8146 )
 
+[node name="box" parent="." instance=ExtResource( 5 )]
+position = Vector2( 578, 693 )
+
+[node name="box2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 475, 541 )
+
 [node name="Turrel" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1025, 750.339 )
+position = Vector2( 905, 796 )
 
 [node name="Turrel2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 570, 850.339 )
+position = Vector2( 1144, 383 )
+
+[node name="Turrel3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 335, 717 )
 
 [node name="tanknpc" parent="." instance=ExtResource( 8 )]
-position = Vector2( 661.756, 353.476 )
+position = Vector2( 1142, 893 )
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 814, 729 )
+rotation = 0.689405
+
+[node name="RigidBody2D2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 881, 698 )
+rotation = 1.82561
+
+[node name="RigidBody2D3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 915, 682 )
+rotation = -0.232129
+
+[node name="RigidBody2D4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 846, 717 )
+rotation = -6.28319
 
 [node name="objects" type="Node2D" parent="."]
 
 [node name="tree" type="Node2D" parent="objects"]
 
 [node name="Mines" type="Node2D" parent="objects"]
+
+[node name="wfegr44huah" parent="." instance=ExtResource( 11 )]
+position = Vector2( 381, 657 )
+rotation = 1.15017
+
+[node name="wfegr44huah2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 438, 745 )
+rotation = 0.689405
+
+[node name="barecata" parent="." instance=ExtResource( 12 )]
+position = Vector2( 512, 623 )
+rotation = -0.00349066
