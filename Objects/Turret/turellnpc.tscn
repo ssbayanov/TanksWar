@@ -4,14 +4,31 @@
 [ext_resource path="res://Images/explosion2.png" type="Texture" id=2]
 [ext_resource path="res://Images/explosion1.png" type="Texture" id=3]
 [ext_resource path="res://Images/explosion5.png" type="Texture" id=4]
-[ext_resource path="res://Objects/NPC/turel.gd" type="Script" id=5]
+[ext_resource path="res://Objects/Turret/turel.gd" type="Script" id=5]
 [ext_resource path="res://Images/explosion4.png" type="Texture" id=6]
 [ext_resource path="res://Images/specialBarrel1_outline.png" type="Texture" id=7]
 [ext_resource path="res://Bullet/shooot.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Shaders/Tunk.gdshader" type="Shader" id=9]
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 9 )
+[sub_resource type="Shader" id=5]
+code = " shader_type canvas_item;
+
+uniform bool grayscale = false;
+uniform bool coldscale = false;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	
+	if (grayscale) { 
+		COLOR.rbg = vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114)));
+	}
+	
+	if (coldscale) { 
+		COLOR.rbg = vec3(COLOR.r * 0.3, COLOR.b * 2.5 , COLOR.g * 1.5);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
 shader_param/grayscale = false
 shader_param/coldscale = false
 
@@ -33,7 +50,7 @@ __meta__ = {
 }
 
 [node name="tank_npc" type="Sprite" parent="."]
-material = SubResource( 2 )
+material = SubResource( 6 )
 scale = Vector2( 1.8, 1.2 )
 texture = ExtResource( 7 )
 

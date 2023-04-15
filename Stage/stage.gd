@@ -72,7 +72,7 @@ func generate_mines():
 		new_mine.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
 
 func generate_enemys():
-	var objects = [load("res://Objects/NPC/tanknpc.tscn"), load("res://Objects/NPC/turellnpc.tscn")]
+	var objects = [load("res://Objects/NPC/tanknpc.tscn"), load("res://Objects/Turret/turellnpc.tscn")]
 	for object in objects:
 		var caunt = rand_rangei(3, 7)
 		rand_seed(map.map_seed)
