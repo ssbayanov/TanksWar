@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://Images/sandbagBeige.png" type="Texture" id=2]
+[ext_resource path="res://Images/sandbagBeige_open.png" type="Texture" id=3]
+[ext_resource path="res://Images/sandbagBrown.png" type="Texture" id=4]
+[ext_resource path="res://Images/sandbagBrown_open.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17, 12 )
+
+[node name="whitebag" type="RigidBody2D"]
+script = ExtResource( 1 )
+color = "Dark"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="SpriteLight" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="SpriteDarkOpen" type="Sprite" parent="."]
+visible = false
+position = Vector2( 3.57628e-07, -5.96046e-08 )
+scale = Vector2( 0.857143, 0.928571 )
+texture = ExtResource( 5 )
+
+[node name="SpriteLightOpen" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1.43051e-06, -0.5 )
+scale = Vector2( 0.857143, 0.892857 )
+texture = ExtResource( 3 )
+
+[node name="SpriteDark" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
