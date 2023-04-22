@@ -17,12 +17,12 @@ func _ready():
 
 # warning-ignore:unused_argument
 
-	
+
+
 func update_tank():
 	var tank_type = keys_tanks[c_key]
 	var tank = g.tanks[tank_type]
 	var barrel_type = keys_barrels[c_key2]
-	var barrel = g.barrels[barrel_type]
 	
 	tank_params['body'] = tank_type
 	tank_params['barrel'] = barrel_type
@@ -34,7 +34,6 @@ func update_tank():
 		
 func _on_Right_pressed():
 	var tank_type = keys_tanks[c_key]
-	var tank = g.tanks[tank_type]
 	c_key += 1
 	if c_key >= len(keys_tanks):
 		c_key = 0
@@ -44,7 +43,6 @@ func _on_Right_pressed():
 		
 func _on_Left_pressed():
 	var tank_type = keys_tanks[c_key]
-	var tank = g.tanks[tank_type]
 	c_key -= 1
 	if c_key < 0:
 		c_key = len(keys_tanks) - 1
@@ -91,7 +89,6 @@ func update_barrel():
 		choose = false
 	else:
 		choose = true
-		arr_b
 
 	
 	for i in range(tank['barrel_count']):

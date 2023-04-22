@@ -21,14 +21,21 @@ var time_cold = 0
 # Console
 
 onready var trackRes = g.track
-onready var bullet_res = g.bullets[0]
+onready var bullet_res = g.bullets
 
 func _ready():
 	$icon.rotation_degrees = 0
 	var bullet = bullet_res.instance()
 	bullet.is_object = true
-	add_bullet(bullet)
+	
+	add_child(bullet)
+#	bullet.hide()
+#	add_bullet(bullet)
 	change_hp(0)
+	$Camera2D.limit_left = -64
+	$Camera2D.limit_top = -64
+	$Camera2D.limit_bottom = (g.map_size.y + 1) * 64
+	$Camera2D.limit_right = (g.map_size.x + 1) * 64
 
 
 func set_params(params: Dictionary):
@@ -49,9 +56,8 @@ func set_params(params: Dictionary):
 	rot_speed = max_speed / 10
 	hp = body['hp']
 	
-	var barrel = g.barrels[params['barrel']]
-	
 	barrels.set_params(params)
+
 #	$Barrels.set_texture(load(barrel['sprite']))
 	print(params)
 	
@@ -138,8 +144,8 @@ func damage_hp(amount):
 	# if god mode is enabled - no damage
 	if g.god_mode: 
 		return
-	
-	change_hp(-amount)
+	var damage = amount + g.barrels[g.tank_parametrs['barrel']]['dmg_hp']
+	change_hp(-damage)
 
 
 func change_hp(amount):

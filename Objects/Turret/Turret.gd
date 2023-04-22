@@ -16,7 +16,10 @@ var can_shoot = 0
 var barrel = true
 
 func _ready():
-	bullet = g.bullets[1].instance()
+	bullet = g.bullets.instance()
+	bullet.is_object = true
+	add_child(bullet)
+	bullet.hide()
 	change_hp(0)
 	
 	
@@ -30,6 +33,8 @@ func _physics_process(delta):
 
 	
 func damage_hp(amount):
+#	var damage = amount + g.barrels[g.tank_parametrs['barrel']]['dmg_hp']
+	g.money += 50
 	change_hp(-amount)
 	
 func boom():
@@ -53,12 +58,7 @@ func change_hp(amount):
 		hp = 100
 	$Node2D/hpbar.set_value(hp)
 	
-	
 
-
-	
-	
-	 
 func _shoot_delayer_process(delta):
 	if shoot_delayer < 1:
 		shoot_delayer += delta 

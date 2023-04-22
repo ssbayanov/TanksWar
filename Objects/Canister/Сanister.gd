@@ -2,7 +2,7 @@ extends Node2D
 
 var hp = 1
 var not_damage = true
-var oil = load("res://Scence/oil.tscn") 
+var oil = load("res://Objects/Canister/oil.tscn") 
 var func_op = false
 
 func _ready():

@@ -26,7 +26,7 @@ var timer = 0
 onready var trackRes = g.track# нужно
 
 func _ready():
-	bullet = g.bullets[1].instance()
+	bullet = g.bullets.instance()
 	change_hp(0)
 
 
@@ -62,7 +62,10 @@ func _physics_process(delta):
 	
 	
 func damage_hp(amount):
+#	var damage = amount + g.barrels[g.tank_parametrs['barrel']]['dmg_hp']
+	g.money += 50
 	change_hp(-amount)
+	
 	
 func boom():
 	hp = 0
