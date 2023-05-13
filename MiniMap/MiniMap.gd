@@ -6,11 +6,11 @@ var marker_list = []
 
 onready var enemy_list = get_tree().get_nodes_in_group("enemy")
 onready var viewport = $Control/ViewportContainer/Viewport
-onready var camera = $Control/ViewportContainer/Viewport/Camera2D
+onready var camera = $Control/ViewportContainer/Viewport/PlayerMarker/Camera2D
 func _ready(): 
 	for e in enemy_list: 
 		add_marker(e)
-	var cam = $Control/ViewportContainer/Viewport/Camera2D
+	var cam = camera
 	
 	#wait for create map
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -36,14 +36,15 @@ func add_marker(obj): # добовляем новый маркер
 	
 func _process(delta):
 	if player == null: return; # Проверка на подгруску персонажа.
-	camera.position = player.position # Задаю позицию камеры в Viewport.
+	$Control/ViewportContainer/Viewport/PlayerMarker.position = player.position # Задаю позицию камеры в Viewport.
 	camera.zoom = Vector2(zoom * 3, zoom * 3) #Задаю размер камеры
-	$Control/PlayerMarker.rect_rotation = player.rotation_degrees + 180 # Поворачиваю с соотвецтвием с игроком.
+	camera.rotation_degrees = 0
+	$Control/ViewportContainer/Viewport/PlayerMarker.rotation_degrees = player.rotation_degrees # Поворачиваю с соотвецтвием с игроком.
 	$zoom_see.text = "ZOOM -" + str(zoom) # Показываю размер зумма.
 
 func _input(event): # Функция для изменения покозтиля размер карты от пользователя.
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_WHEEL_UP: zoom -= 0.1;
 		if event.button_index == BUTTON_WHEEL_DOWN: zoom += 0.1;
-		if zoom > 6: zoom = 6
-		if zoom < 0.5: zoom = 0.5
+		if zoom > 3: zoom = 3
+		if zoom < 1: zoom = 1
