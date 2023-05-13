@@ -1,4 +1,7 @@
 extends Node2D
+signal freeze
+signal classic
+
 
 enum MineType {CLASSIC, FLASH, COLD, BLACK_HOLE}
 export(MineType) var type_of_explosion
@@ -55,22 +58,21 @@ func _physics_process(delta):
 			
 		time += delta
 		
-		
 		if time > detonation_time:
 			detonate()
 			if type_of_explosion == MineType.CLASSIC:
-				obj.damage_hp(abs(150 - (leng / 2)))
+				# obj.damage_hp(abs(150 - (leng / 2)))
+				emit_signal("classic")
 				#queue_free()
 			elif type_of_explosion == MineType.FLASH:
 				if obj.has_method("flashing"):
 					obj.flashing(0.5)
 			elif type_of_explosion == MineType.COLD:
-				if obj.has_method("colding"):
-					obj.colding(abs(150 - (leng / 2)))
+				emit_signal("freeze")
 			elif type_of_explosion == MineType.BLACK_HOLE:
 				if "c_speed" in obj:
 					var dist = (obj.global_position - global_position)
-					obj.global_position -= dist * (detonation_distance - dist.length()) / 100 * delta
+					obj.global_position -= dist * (detonation_distance - dist.length()) / 10 * delta
 					
 	if in_detonation_distance == 0:
 		time = 0
