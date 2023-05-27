@@ -16,6 +16,7 @@ var can_shoot = 0
 var barrel = true
 
 func _ready():
+	g.targets += 1
 	bullet = g.bullets.instance()
 	bullet.is_object = true
 	add_child(bullet)
@@ -34,7 +35,7 @@ func _physics_process(delta):
 	
 func damage_hp(amount):
 #	var damage = amount + g.barrels[g.tank_parametrs['barrel']]['dmg_hp']
-	g.money += 50
+#	g.money += 50
 	change_hp(-amount)
 	
 func boom():
@@ -45,15 +46,20 @@ func boom():
 	player_tank = null
 	$Node2D/reloadprogress.hide()
 	$tank_npc.material.set_shader_param("grayscale", true)
-	
+	print('moneeeeyyyy')
+#		emit_signal("removed", self)
+	g.point += 100
+	g.targets -= 1
+	get_parent().kill_enemy()
 	
 func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
-#		emit_signal("removed", self)
+
 		remove_from_group("minimap_objects")
 		boom()
+		
 	if hp > 100:
 		hp = 100
 	$Node2D/hpbar.set_value(hp)

@@ -12,6 +12,7 @@
 [ext_resource path="res://Objects/Canister/Сanister.tscn" type="PackedScene" id=11]
 
 [node name="stage" type="Node2D"]
+pause_mode = 1
 position = Vector2( 0, -5.33936 )
 script = ExtResource( 1 )
 __meta__ = {

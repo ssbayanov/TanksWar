@@ -13,6 +13,7 @@ var keys_barrels = g.barrels.keys()
 var tank_params = {}
 
 func _ready():
+	$Panel/buy.hide()
 	update_tank()
 
 # warning-ignore:unused_argument
@@ -39,6 +40,13 @@ func _on_Right_pressed():
 		c_key = 0
 	check_barrel()
 	update_tank()
+	
+	if tank_params['barrel'] in g.bought_bar and tank_params['body'] in g.bought_tank:
+		g.bought = true
+		$Panel/buy.hide()
+	else:
+		g.bought = false
+		$Panel/buy.show()
 
 		
 func _on_Left_pressed():
@@ -46,10 +54,15 @@ func _on_Left_pressed():
 	c_key -= 1
 	if c_key < 0:
 		c_key = len(keys_tanks) - 1
-
+	
 	check_barrel()
 	update_tank()
-
+	if tank_params['barrel'] in g.bought_bar and tank_params['body'] in g.bought_tank:
+		g.bought = true
+		$Panel/buy.hide()
+	else:
+		g.bought = false
+		$Panel/buy.show()
 	
 		
 
@@ -75,16 +88,16 @@ func update_barrel():
 	if choose == false:
 #		print('aaaaaaaaaaaaaaaaa', tank['max_barrel_type'])
 		c_key2 = tank['max_barrel_type'] -1
-		print('aa', c_key2)
+#		print('aa', c_key2)
 	if c_key2 < 0:
 		c_key2 = 0
 	for i in range(len(arr_b)):
 		var n = arr_b.pop_front()
-		print(n,'n')
+#		print(n,'n')
 		n.queue_free()
 
 	
-	print(arr_b, 'aaaaaaaaaaaaaa')
+#	print(arr_b, 'aaaaaaaaaaaaaa')
 	if barrel['barrel_type'] > tank['max_barrel_type']: 
 		choose = false
 	else:
@@ -92,7 +105,7 @@ func update_barrel():
 
 	
 	for i in range(tank['barrel_count']):
-		print(i)
+#		print(i)
 		
 		var new_barrel = barrel_res.instance()
 		new_barrel.set_type(keys_barrels[c_key2])
@@ -120,7 +133,7 @@ func update_barrel():
 	
 
 func _on_Left_b_pressed():
-	print(choose, c_key2)
+#	print(choose, c_key2)
 	var tank_type = keys_tanks[c_key]
 	var tank = g.tanks[tank_type]
 	c_key2 -= 1
@@ -130,13 +143,19 @@ func _on_Left_b_pressed():
 	if choose == false:
 #		print('aaaaaaaaaaaaaaaaa', tank['max_barrel_type'])
 		c_key2 = tank['max_barrel_type'] -1
-		print('aa', c_key2)
+#		print('aa', c_key2)
 	update_barrel()
+	if tank_params['barrel'] in g.bought_bar and tank_params['body'] in g.bought_tank:
+		g.bought = true
+		$Panel/buy.hide()
+	else:
+		g.bought = false
+		$Panel/buy.show()
 
 	
 
 func _on_Right_b_pressed():
-	print(choose, c_key2)
+#	print(choose, c_key2)
 	var tank_type = keys_tanks[c_key]
 	var tank = g.tanks[tank_type]
 	c_key2 += 1
@@ -147,3 +166,10 @@ func _on_Right_b_pressed():
 	if choose == false:
 		c_key2 = 0
 	update_barrel()
+	
+	if tank_params['barrel'] in g.bought_bar and tank_params['body'] in g.bought_tank:
+		g.bought = true
+		$Panel/buy.hide()
+	else:
+		g.bought = false
+		$Panel/buy.show()
