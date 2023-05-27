@@ -26,6 +26,7 @@ var timer = 0
 onready var trackRes = g.track# нужно
 
 func _ready():
+	g.targets += 1
 	bullet = g.bullets.instance()
 	change_hp(0)
 
@@ -63,25 +64,29 @@ func _physics_process(delta):
 	
 func damage_hp(amount):
 #	var damage = amount + g.barrels[g.tank_parametrs['barrel']]['dmg_hp']
-	g.money += 50
+#	g.money += 50
 	change_hp(-amount)
 	
 	
 func boom():
 	hp = 0
+
 	$boom_player.show()
 	$boom_player.play()
 	$CollisionShape2D.disabled = true
 	player_tank = null
 	$Node2D/reloadprogress.hide()
 	$tank_npc.material.set_shader_param("grayscale", true)
-	
+	g.point += 100
+	g.targets -= 1
+	get_parent().kill_enemy()
 	
 func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
 		#signal("remove_turrel")
+
 		remove_from_group("minimap_objects")
 		boom()
 	if hp > 100:
@@ -166,6 +171,10 @@ func inaction():
 	
 	var rot_error = g.rand_rangei((ride_accuracy - 100), (100 - ride_accuracy)) / 100.0 * PI 
 	var distance_error = g.rand_rangei((ride_accuracy - 100), (100 - ride_accuracy)) / 100.0 * max_destance_error# / 100 
+
+#	print("Угол -", rad2deg(angel))
+#	racy)) / 100.0 * PI 
+
 
 #	print("Угол -", rad2deg(angel))
 #	print(rad2deg(rot_error))

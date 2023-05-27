@@ -4,22 +4,35 @@ var Tilemap = null
 var cost_tank = 0
 var money = 0
 # Console
+var show_all = false
+var money_earn = 0
+var inter = false
+var interfeise = load("res://MainMenu/MainMenu.tscn")
 var god_mode:bool = false
 var speed_coff:int = 1
 var tank_parametrs
 var game
-
 var bullets = load("res://Bullet/bullet2.tscn")
-
+var bought = true
+var bought_tank = []
+var bought_bar = []
 var stage = load("res://Stage/Stage.tscn")
 var barrel = load("res://MainMenu/barrel.tscn")
 var track = load("res://Objects/Track/track.tscn")
-
-
+var global = true
+var point = 0
+var targets = 0
+var staje = false
+var dictionary_save = {
+	'money': 0,
+	'bought_tank': [],
+	'bought_bar': []
+}
 
 var tanks = {
 	'standart':{
 		'cost': 0,
+		'coof': 1,
 		'sprite': "res://Images/tankBody_dark_outline.png",
 		'barrel_count': 1,
 		'hp': 100,
@@ -35,6 +48,7 @@ var tanks = {
  
 	'big_tank': {
 		'cost': 500,
+		'coof': 2,
 		'sprite': "res://Images/tankBody_darkLarge_outline.png",
 		'barrel_count': 2,
 		'hp': 150,
@@ -49,6 +63,7 @@ var tanks = {
 		},
 	'the_biggest_tank': {
 		'cost': 1000,
+		'coof': 3,
 		'sprite': "res://Images/tankBody_huge_outline.png",
 		'barrel_count': 4,
 		'hp': 250,
@@ -120,5 +135,16 @@ func Get_Console(info):
 	console.write(time_return + "-" + "Console_conected")
 
 
+func save_money():
+	dictionary_save['money'] = money
+	dictionary_save['bought_tank'] = bought_tank
+	dictionary_save['bought_bar'] = bought_bar
+#	print('dcfvgbhnjmk,l.sdasdasdasdasdasdasdasd')
+	var save_money = File.new()
+	save_money.open("user://savemoney.save", File.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	save_money.store_line(to_json(g.dictionary_save))
+	save_money.close()
+	print(money, 'money')
 
-
+ 

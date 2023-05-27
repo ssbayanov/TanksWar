@@ -1,8 +1,28 @@
 extends Node2D
-
 onready var map = $map
 
+signal stage_complete
+signal stage_completed
+
+#var enemies = 0
+
+func kill_enemy():
+#	enemies -= 1
+	if g.targets <= 0:
+#		get_tree()
+		emit_signal('stage_complete')
+		emit_signal('stage_completed')
+		queue_free()
+		
+func _process(delta):
+#	if g.targets == 0:
+#		var game = g.interfeise.instance()
+#		get_tree().get_root().add_child(game)
+#		hide()
+#		emit_signal('stage_complete')
+		pass
 func _ready():
+	g.money += 100
 	rand_seed(map.map_seed)
 	get_data_for_player()
 	

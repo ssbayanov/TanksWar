@@ -59,7 +59,14 @@ func set_params(params: Dictionary):
 	
 	
 func _process(delta):
-#	g.print(global_position)
+#	print(g.targets)
+	var text_points = $hpbar/money
+	var text_p = 'points: ' + str(g.point)
+	var text_vrag = $hpbar/targets
+	var text_v = 'targets: ' + str(g.targets)
+	text_points.text = text_p
+	text_vrag.text = text_v
+
 	if time_cold > 0:
 		return
 

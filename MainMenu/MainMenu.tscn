@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://MainMenu/Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://MainMenu/mainmenu.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://MainMenu/Images/chain_end.png" type="Texture" id=8]
 [ext_resource path="res://MainMenu/Images/chain_start.png" type="Texture" id=9]
 [ext_resource path="res://MainMenu/Images/chain.png" type="Texture" id=10]
+[ext_resource path="res://MainMenu/end_menu.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -43,10 +44,6 @@ Label/fonts/font = SubResource( 1 )
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 1, 0.87451, 0.490196, 1 )
 
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 616, 617 )
-
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 683, 837 )
@@ -54,11 +51,9 @@ region_rect = Rect2( 0, 0, 683, 837 )
 [sub_resource type="Theme" id=11]
 Panel/styles/panel = SubResource( 10 )
 
-[sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 70, 56 )
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 616, 617 )
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 10 )
@@ -69,6 +64,12 @@ axis_stretch_vertical = 2
 [sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 70, 70 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 70, 56 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="DynamicFont" id=15]
 size = 120
@@ -97,6 +98,7 @@ outline_size = 1
 font_data = ExtResource( 1 )
 
 [node name="interfeise" type="Control"]
+pause_mode = 2
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_pivot_offset = Vector2( 1271.09, 24.4565 )
@@ -107,7 +109,15 @@ __meta__ = {
 "_edit_vertical_guides_": [ -350.813, -1145.0 ]
 }
 
-[node name="BG" type="Panel" parent="."]
+[node name="end_menu" type="CanvasLayer" parent="."]
+pause_mode = 2
+visible = false
+script = ExtResource( 11 )
+
+[node name="Timer" type="Timer" parent="end_menu"]
+wait_time = 0.005
+
+[node name="BG" type="Panel" parent="end_menu"]
 margin_left = -25.0
 margin_top = -15.0
 margin_right = 1927.0
@@ -116,50 +126,147 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 8 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="MainMenu" type="Panel" parent="end_menu"]
+margin_left = 656.0
+margin_top = 138.0
+margin_right = 1128.0
+margin_bottom = 755.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Panel" type="Panel" parent="end_menu"]
 margin_right = 376.0
 margin_bottom = 376.0
 custom_styles/panel = SubResource( 9 )
 
-[node name="Customise" type="Control" parent="."]
+[node name="CanvasLayer" type="Control" parent="end_menu"]
+
+[node name="points" type="Label" parent="end_menu/CanvasLayer"]
+pause_mode = 2
+process_priority = 1
+margin_left = 688.777
+margin_top = 274.977
+margin_right = 816.777
+margin_bottom = 290.977
+rect_scale = Vector2( 10, 10 )
+text = "points: "
+
+[node name="money" type="Label" parent="end_menu/CanvasLayer"]
+pause_mode = 2
+margin_left = 696.786
+margin_top = 552.624
+margin_right = 808.786
+margin_bottom = 568.624
+rect_scale = Vector2( 10, 10 )
+text = "money: "
+
+[node name="exit" type="Button" parent="end_menu/CanvasLayer"]
+pause_mode = 2
+margin_left = 548.872
+margin_top = 826.282
+margin_right = 692.872
+margin_bottom = 846.282
+rect_scale = Vector2( 8, 8 )
+text = "main menu"
+flat = true
+
+[node name="ChainMenu" type="VBoxContainer" parent="end_menu"]
+margin_left = 869.0
+margin_top = -37.0
+margin_right = 919.0
+margin_bottom = 248.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="chain" type="Panel" parent="end_menu/ChainMenu"]
+margin_right = 50.0
+margin_bottom = 235.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 13 )
+
+[node name="end" type="Panel" parent="end_menu/ChainMenu"]
+margin_top = 235.0
+margin_right = 50.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/panel = SubResource( 14 )
+
+[node name="start_menu" type="Control" parent="."]
+
+[node name="BG" type="Panel" parent="start_menu"]
+margin_left = -25.0
+margin_top = -15.0
+margin_right = 1927.0
+margin_bottom = 1105.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 8 )
+
+[node name="Panel" type="Panel" parent="start_menu"]
+margin_right = 376.0
+margin_bottom = 376.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="Customise" type="Control" parent="start_menu"]
 script = ExtResource( 7 )
 
-[node name="Panel" type="Panel" parent="Customise"]
+[node name="Panel" type="Panel" parent="start_menu/Customise"]
 margin_left = -0.777618
 margin_top = 459.5
 margin_right = 377.222
 margin_bottom = 960.5
 theme = SubResource( 11 )
 
-[node name="Left" type="Button" parent="Customise/Panel"]
+[node name="buy" type="Button" parent="start_menu/Customise/Panel"]
+margin_left = 110.962
+margin_top = 325.562
+margin_right = 158.962
+margin_bottom = 341.562
+rect_scale = Vector2( 3, 4 )
+text = "Buy"
+flat = true
+
+[node name="Left" type="Button" parent="start_menu/Customise/Panel"]
 margin_left = 25.2224
 margin_top = 108.5
 margin_right = 82.2224
 margin_bottom = 159.5
 text = "<<-"
 
-[node name="Right" type="Button" parent="Customise/Panel"]
+[node name="Right" type="Button" parent="start_menu/Customise/Panel"]
 margin_left = 270.222
 margin_top = 110.5
 margin_right = 346.222
 margin_bottom = 170.5
 text = "->>>"
 
-[node name="Left b" type="Button" parent="Customise/Panel"]
+[node name="Left b" type="Button" parent="start_menu/Customise/Panel"]
 margin_left = 22.2224
 margin_top = 324.5
 margin_right = 98.2224
 margin_bottom = 375.5
 text = "<<<-"
 
-[node name="Right b" type="Button" parent="Customise/Panel"]
+[node name="Right b" type="Button" parent="start_menu/Customise/Panel"]
 margin_left = 278.222
 margin_top = 328.5
 margin_right = 354.222
 margin_bottom = 388.5
 text = "->>>"
 
-[node name="Chain" type="VBoxContainer" parent="Customise"]
+[node name="Chain" type="VBoxContainer" parent="start_menu/Customise"]
 margin_left = 151.0
 margin_top = 133.0
 margin_right = 201.0
@@ -173,7 +280,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="start" type="Panel" parent="Customise/Chain"]
+[node name="start" type="Panel" parent="start_menu/Customise/Chain"]
 margin_right = 50.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
@@ -181,7 +288,7 @@ size_flags_horizontal = 13
 size_flags_vertical = 13
 custom_styles/panel = SubResource( 12 )
 
-[node name="chain" type="Panel" parent="Customise/Chain"]
+[node name="chain" type="Panel" parent="start_menu/Customise/Chain"]
 margin_top = 40.0
 margin_right = 50.0
 margin_bottom = 345.0
@@ -190,22 +297,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 13 )
 
-[node name="end" type="Panel" parent="Customise/Chain"]
+[node name="end" type="Panel" parent="start_menu/Customise/Chain"]
 margin_top = 345.0
 margin_right = 50.0
 margin_bottom = 395.0
 rect_min_size = Vector2( 0, 50 )
 custom_styles/panel = SubResource( 14 )
 
-[node name="castom" type="Node2D" parent="Customise"]
+[node name="castom" type="Node2D" parent="start_menu/Customise"]
 position = Vector2( 176, 697 )
 
-[node name="Tank" type="Sprite" parent="Customise/castom"]
+[node name="Tank" type="Sprite" parent="start_menu/Customise/castom"]
 scale = Vector2( 2, 2 )
 
-[node name="barrel" type="Sprite" parent="Customise/castom"]
+[node name="barrel" type="Sprite" parent="start_menu/Customise/castom"]
 
-[node name="MainMenu" type="Panel" parent="."]
+[node name="MainMenu" type="Panel" parent="start_menu"]
 margin_left = 656.0
 margin_top = 138.0
 margin_right = 1128.0
@@ -217,7 +324,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Layout" type="VBoxContainer" parent="MainMenu"]
+[node name="Layout" type="VBoxContainer" parent="start_menu/MainMenu"]
 margin_left = 16.0
 margin_top = 83.0
 margin_right = 470.0
@@ -228,7 +335,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="start" type="Button" parent="MainMenu/Layout"]
+[node name="start" type="Button" parent="start_menu/MainMenu/Layout"]
 margin_top = 20.0
 margin_right = 454.0
 margin_bottom = 193.0
@@ -242,7 +349,7 @@ text = "play"
 flat = true
 clip_text = true
 
-[node name="options" type="Button" parent="MainMenu/Layout"]
+[node name="options" type="Button" parent="start_menu/MainMenu/Layout"]
 margin_top = 197.0
 margin_right = 454.0
 margin_bottom = 312.0
@@ -257,7 +364,7 @@ __meta__ = {
 "_editor_description_": "start"
 }
 
-[node name="exet" type="Button" parent="MainMenu/Layout"]
+[node name="exet" type="Button" parent="start_menu/MainMenu/Layout"]
 margin_top = 316.0
 margin_right = 454.0
 margin_bottom = 489.0
@@ -270,7 +377,7 @@ custom_fonts/font = SubResource( 17 )
 text = "exit"
 flat = true
 
-[node name="ChainMenu" type="VBoxContainer" parent="."]
+[node name="ChainMenu" type="VBoxContainer" parent="start_menu"]
 margin_left = 869.0
 margin_top = -37.0
 margin_right = 919.0
@@ -284,7 +391,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="chain" type="Panel" parent="ChainMenu"]
+[node name="chain" type="Panel" parent="start_menu/ChainMenu"]
 margin_right = 50.0
 margin_bottom = 235.0
 rect_min_size = Vector2( 0, 200 )
@@ -292,14 +399,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 13 )
 
-[node name="end" type="Panel" parent="ChainMenu"]
+[node name="end" type="Panel" parent="start_menu/ChainMenu"]
 margin_top = 235.0
 margin_right = 50.0
 margin_bottom = 285.0
 rect_min_size = Vector2( 0, 50 )
 custom_styles/panel = SubResource( 14 )
 
-[node name="ExitWindow" type="Sprite" parent="."]
+[node name="ExitWindow" type="Sprite" parent="start_menu"]
 visible = false
 self_modulate = Color( 1, 0.992157, 0.992157, 1 )
 position = Vector2( 1839, 412 )
@@ -311,7 +418,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="no" type="Button" parent="ExitWindow"]
+[node name="no" type="Button" parent="start_menu/ExitWindow"]
 margin_left = -783.47
 margin_top = 184.987
 margin_right = -561.47
@@ -324,7 +431,7 @@ custom_fonts/font = SubResource( 18 )
 text = "нет"
 flat = true
 
-[node name="yes" type="Button" parent="ExitWindow"]
+[node name="yes" type="Button" parent="start_menu/ExitWindow"]
 margin_left = -1316.0
 margin_top = 117.0
 margin_right = -903.997
@@ -339,7 +446,7 @@ keep_pressed_outside = true
 text = "да"
 flat = true
 
-[node name="Label" type="Label" parent="ExitWindow"]
+[node name="Label" type="Label" parent="start_menu/ExitWindow"]
 margin_left = -1404.0
 margin_top = -25.0
 margin_right = 458.0
@@ -352,7 +459,7 @@ text = "Вы действительно хотити
 выйти из игры?"
 align = 1
 
-[node name="your_money" type="Label" parent="."]
+[node name="your_money" type="Label" parent="start_menu"]
 margin_left = 15.7844
 margin_top = 915.707
 margin_right = 237.784
@@ -360,7 +467,7 @@ margin_bottom = 967.708
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "your money:"
 
-[node name="cost_tank" type="Label" parent="."]
+[node name="cost_tank" type="Label" parent="start_menu"]
 margin_left = 15.2546
 margin_top = 881.994
 margin_right = 237.255
@@ -369,11 +476,15 @@ rect_scale = Vector2( 1.5, 1.5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "cost:"
 
-[connection signal="pressed" from="Customise/Panel/Left" to="Customise" method="_on_Left_pressed"]
-[connection signal="pressed" from="Customise/Panel/Right" to="Customise" method="_on_Right_pressed"]
-[connection signal="pressed" from="Customise/Panel/Left b" to="Customise" method="_on_Left_b_pressed"]
-[connection signal="pressed" from="Customise/Panel/Right b" to="Customise" method="_on_Right_b_pressed"]
-[connection signal="pressed" from="MainMenu/Layout/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MainMenu/Layout/exet" to="." method="_on_exet_pressed"]
-[connection signal="pressed" from="ExitWindow/no" to="." method="_on_no_pressed"]
-[connection signal="pressed" from="ExitWindow/yes" to="." method="_on_yes_pressed"]
+[connection signal="show_all" from="end_menu" to="." method="_on_end_menu_show_all"]
+[connection signal="timeout" from="end_menu/Timer" to="end_menu" method="_on_Timer_timeout"]
+[connection signal="pressed" from="end_menu/CanvasLayer/exit" to="end_menu" method="_on_exit_pressed"]
+[connection signal="pressed" from="start_menu/Customise/Panel/buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="start_menu/Customise/Panel/Left" to="start_menu/Customise" method="_on_Left_pressed"]
+[connection signal="pressed" from="start_menu/Customise/Panel/Right" to="start_menu/Customise" method="_on_Right_pressed"]
+[connection signal="pressed" from="start_menu/Customise/Panel/Left b" to="start_menu/Customise" method="_on_Left_b_pressed"]
+[connection signal="pressed" from="start_menu/Customise/Panel/Right b" to="start_menu/Customise" method="_on_Right_b_pressed"]
+[connection signal="pressed" from="start_menu/MainMenu/Layout/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="start_menu/MainMenu/Layout/exet" to="." method="_on_exet_pressed"]
+[connection signal="pressed" from="start_menu/ExitWindow/no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="start_menu/ExitWindow/yes" to="." method="_on_yes_pressed"]
