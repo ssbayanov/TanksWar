@@ -16,23 +16,17 @@ func _ready():
 	save_money.open("user://savemoney.save", File.READ)
 #    while save_money.get_position() < save_money.get_len():
 	var node_data = parse_json(save_money.get_line())
-	
-	g.dictionary_save = node_data
+	if typeof(node_data) == TYPE_DICTIONARY:
+		g.dictionary_save = node_data
+		
 #	print('xsdcfvgbhnjmk,', g.money)
 	save_money.close()
 	g.money = g.dictionary_save['money']
 	g.bought_bar = g.dictionary_save['bought_bar']
 	g.bought_tank = g.dictionary_save['bought_tank']
-	
-
 
 
 func _process(delta):
-	
-		
-
-
-	
 	
 	g.cost_tank = g.tanks[customise.tank_params['body']]['cost'] + g.barrels[customise.tank_params['barrel']]['cost']
 	var text_money = your_money

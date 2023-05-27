@@ -78,14 +78,6 @@ stream = ExtResource( 4 )
 
 [node name="hpbar" type="Node2D" parent="."]
 
-[node name="money" type="Label" parent="hpbar"]
-margin_left = 641.053
-margin_top = -492.371
-margin_right = 733.053
-margin_bottom = -478.371
-rect_scale = Vector2( 3, 3 )
-text = "points: 0"
-
 [node name="hpbar" type="ProgressBar" parent="hpbar"]
 margin_left = -40.0
 margin_top = -60.0
@@ -105,14 +97,6 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="targets" type="Label" parent="hpbar"]
-margin_left = 642.792
-margin_top = -446.469
-margin_right = 700.792
-margin_bottom = -432.469
-rect_scale = Vector2( 3, 3 )
-text = "targets: ?"
-
 [node name="Barrels" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
@@ -121,3 +105,21 @@ script = ExtResource( 6 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/rotating = SubResource( 6 )
 anims/rotating_left = SubResource( 7 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="money" type="Label" parent="HUD"]
+margin_left = 641.033
+margin_top = -492.397
+margin_right = 733.033
+margin_bottom = -478.397
+rect_scale = Vector2( 3, 3 )
+text = "points: 0"
+
+[node name="targets" type="Label" parent="HUD"]
+margin_left = 642.774
+margin_top = -446.496
+margin_right = 700.774
+margin_bottom = -432.496
+rect_scale = Vector2( 3, 3 )
+text = "targets: ?"

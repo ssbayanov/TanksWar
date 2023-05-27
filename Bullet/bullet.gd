@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var shoot_delay = 0.7#через какой промежуток времени можно стрелять сново
 var player = null
-var speed =  2000#скорость пули
+var speed =  2000 # скорость пули
 var c_speed = Vector2()
 var dammage = 10 # урон пули
 var startpos = 0

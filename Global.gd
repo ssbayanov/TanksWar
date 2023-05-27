@@ -23,6 +23,9 @@ var global = true
 var point = 0
 var targets = 0
 var staje = false
+
+var map_size = Vector2()
+
 var dictionary_save = {
 	'money': 0,
 	'bought_tank': [],
@@ -107,6 +110,12 @@ var barrels = {
 	}
 }
 
+var shoots_resources = {
+	"shootLarge": load("res://Barrel/Shoot/shotLarge.png"),
+	"shootOrange": load("res://Barrel/Shoot/shotOrange.png"),
+	"shootRed": load("res://Barrel/Shoot/shotRed.png"),
+	"shootThin": load("res://Barrel/Shoot/shotThin.png")
+}
 
 
 var keys_tanks = tanks.keys()
