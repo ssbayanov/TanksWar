@@ -9,7 +9,6 @@
 [ext_resource path="res://Objects/Explosion/explosion4.png" type="Texture" id=7]
 [ext_resource path="res://Bullet/shooot.tscn" type="PackedScene" id=8]
 
-
 [sub_resource type="Shader" id=5]
 code = " shader_type canvas_item;
 
@@ -70,15 +69,15 @@ position = Vector2( -9.5, -40.75 )
 visible = false
 position = Vector2( 10, -40.75 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="NoRotateble" type="Node2D" parent="."]
 
-[node name="hpbar" type="ProgressBar" parent="Node2D"]
+[node name="hpbar" type="ProgressBar" parent="NoRotateble"]
 margin_left = -32.0
 margin_top = -60.0
 margin_right = 38.0
 margin_bottom = -45.0
 
-[node name="reloadprogress" type="ProgressBar" parent="Node2D"]
+[node name="reloadprogress" type="ProgressBar" parent="NoRotateble"]
 margin_left = -32.0
 margin_top = -45.0
 margin_right = 38.0
