@@ -25,6 +25,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+<<<<<<< Updated upstream
 margin_left = -220.0
 margin_top = -266.0
 margin_right = 46.0
@@ -37,6 +38,12 @@ margin_left = 1.0
 margin_top = -539.0
 margin_right = 267.0
 margin_bottom = -302.0
+=======
+margin_left = -1920.0
+margin_top = -1080.0
+margin_right = -1664.0
+margin_bottom = -806.0
+>>>>>>> Stashed changes
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )

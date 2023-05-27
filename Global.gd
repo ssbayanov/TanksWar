@@ -19,6 +19,7 @@ var stage = load("res://Stage/Stage.tscn")
 var barrel = load("res://MainMenu/barrel.tscn")
 var track = load("res://Objects/Track/track.tscn")
 
+var voliume = 100
 
 var tanks = {
 	'standart':{
