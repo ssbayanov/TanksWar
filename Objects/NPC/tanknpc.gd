@@ -42,8 +42,6 @@ func _process(delta):
 	#_shoot_delayer_process(delta)
 
 
-var data_for_forward = [0, 0]
-
 func _physics_process(delta):
 	if not player_tank:
 		return
