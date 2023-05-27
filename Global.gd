@@ -17,6 +17,12 @@ var stage = load("res://Stage/Stage.tscn")
 var barrel = load("res://MainMenu/barrel.tscn")
 var track = load("res://Objects/Track/track.tscn")
 
+var shoots_resources = {
+	"shootLarge": load("res://Barrel/Shoot/shotLarge.png"),
+	"shootOrange": load("res://Barrel/Shoot/shotOrange.png"),
+	"shootRed": load("res://Barrel/Shoot/shotRed.png"),
+	"shootThin": load("res://Barrel/Shoot/shotThin.png")
+}
 
 
 var tanks = {

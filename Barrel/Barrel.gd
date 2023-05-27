@@ -36,13 +36,9 @@ func shoot():
 		newbullet.global_rotation = $Sprite.global_rotation + PI
 		newbullet.is_object = false
 		shoot_delayer = 0
-		$shooot.play("default")
-		$shooot.show()
-		
+		$Shoot.shoot()
 
-func _on_shooot_animation_finished():
-	$shooot.set_frame(0)
-	$shooot.hide()
+		
 	
 	
 func add_bullet(new_bullet):
