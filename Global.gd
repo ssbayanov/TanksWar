@@ -14,7 +14,7 @@ var map_size = Vector2()
 var bullets = load("res://Bullet/Bullet2.tscn")
 
 var stage = load("res://Stage/Stage.tscn")
-var barrel = load("res://MainMenu/barrel.tscn")
+var barrel = load("res://Barrel/barrel.tscn")
 var track = load("res://Objects/Track/track.tscn")
 
 var shoots_resources = {

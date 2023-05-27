@@ -2,13 +2,13 @@
 
 [ext_resource path="res://Stage/stage.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Turret/Turret.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sounds/World of Tanks (20).mp3" type="AudioStream" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Box/box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Map/map.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Bullet/bullet2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/NPC/tanknpc.tscn" type="PackedScene" id=8]
 [ext_resource path="res://MiniMap/MiniMap.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sounds/Игра денди - Танчики (www.hotplayer.ru).mp3" type="AudioStream" id=10]
 [ext_resource path="res://Objects/Canister/Сanister.tscn" type="PackedScene" id=11]
 
 [node name="stage" type="Node2D"]
@@ -33,7 +33,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 3 )
 
 [node name="map" parent="." instance=ExtResource( 6 )]
 

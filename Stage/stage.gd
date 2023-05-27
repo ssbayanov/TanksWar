@@ -78,3 +78,4 @@ func generate_boxes():
 			var y = rand_rangei(0, map.size.y)
 			$objects/Mines.add_child(new_mine)
 			new_mine.global_position = Vector2((x * 64) + 32, (y * 64) + 32)
+		$AudioStreamPlayer2D.play()

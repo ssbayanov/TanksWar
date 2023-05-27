@@ -63,6 +63,7 @@ func _physics_process(delta):
 	
 func damage_hp(amount):
 #	var damage = amount + g.barrels[g.tank_parametrs['barrel']]['dmg_hp']
+	$rrrrr.play()
 	g.money += 50
 	change_hp(-amount)
 	
@@ -81,6 +82,7 @@ func change_hp(amount):
 	hp +=amount
 	if hp <=0:
 		hp = 0
+		$ooooo.play()
 		#signal("remove_turrel")
 		remove_from_group("minimap_objects")
 		boom()
@@ -106,7 +108,7 @@ func _shoot_delayer_process(delta):
 	$Node2D.set_global_rotation(0)
 	if can_shoot > 0:
 		_shoot() 
-	
+		$uiuiui.play()
 	
 	
 	

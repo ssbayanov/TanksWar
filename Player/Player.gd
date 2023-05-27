@@ -69,6 +69,7 @@ func _process(delta):
 
 	if Input.is_action_pressed("ui_accept"):
 		barrels.shoot()
+		$AudioStreamPlayer2D2.play()
 	$hpbar.set_global_rotation(0)
 
 
@@ -141,6 +142,7 @@ func _physics_process(delta):
 
 
 func damage_hp(amount):
+	$AudioStreamPlayer2D3.play()
 	# if god mode is enabled - no damage
 	if g.god_mode: 
 		return
@@ -153,7 +155,7 @@ func change_hp(amount):
 	
 	if hp <=0:
 		hp = 0
-		
+		$AudioStreamPlayer24D.play()
 	if hp > 100:
 		hp = 100
 		
